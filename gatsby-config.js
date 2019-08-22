@@ -1,32 +1,55 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Raconteur Reports`,
+    description: `Report platform for Raconteur`,
+    author: `Jacob Herper <jacob@herper.io>`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: process.env.GTM_ID,
+        includeInDevelopment: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `raconteur-reports`,
+        short_name: `reports`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#ef3d4b`,
+        display: `standalone`,
+        icon: `src/assets/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-nprogress`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets`,
+      },
+    },
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
