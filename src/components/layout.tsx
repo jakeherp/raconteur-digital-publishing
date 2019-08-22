@@ -1,35 +1,46 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-
-import Header from "./header"
+import { ThemeProvider } from "styled-components"
 import "./layout.css"
+
+import { Provider } from "../hoc/context"
+import Footer from "./footer"
 
 interface IProps {
   children: React.ReactNode
 }
 
-const Layout = ({ children }: IProps) => {
-  return (
-    <React.Fragment>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </React.Fragment>
-  )
+const theme = {
+  breakpoints: {
+    desktop: `966px`,
+    tablet: `768px`,
+    phone: `576px`,
+  },
+  colors: {
+    black: `#000000`,
+    darkGrey: `#404040`,
+    lightGrey: `#f6f5f5`,
+    mediumGrey: `#d8d8d8`,
+    primary: `#78c8d7`,
+    secondary: `#e64150`,
+    white: `#ffffff`,
+  },
+  fonts: {
+    body: `"Apercu", sans-serif`,
+    medium: `"Apercu-Medium", sans-serif`,
+  },
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+const Layout = ({ children }: IProps) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Provider>
+        <React.Fragment>
+          <main>{children}</main>
+          <Footer />
+        </React.Fragment>
+      </Provider>
+    </ThemeProvider>
+  )
 }
 
 export default Layout
