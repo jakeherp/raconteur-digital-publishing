@@ -8,6 +8,7 @@ const Context = createContext<any>({})
 
 const Provider = ({ children }: IProps) => {
   const [report, setReport] = useState<object>({
+    color: `#040095`,
     sponsoredBy: `Axa`,
     footerText: `Exercitation anim do consequat fugiat est nisi elit. Ex magna culpa et ad ullamco esse amet. Veniam do anim commodo laborum elit laboris. Nulla irure cillum pariatur do mollit voluptate do duis sit ut quis magna. Enim et aute dolore anim. Ad deserunt officia et irure aute duis aute laborum ullamco aliquip qui excepteur. Commodo ullamco officia voluptate qui nulla nostrud non ad proident esse magna in. Anim eu reprehenderit est enim tempor.`,
     publisher: `John Doe`,

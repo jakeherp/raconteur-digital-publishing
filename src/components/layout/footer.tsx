@@ -1,14 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 
-import Context from "../hoc/context"
+import Context from "../../hoc/context"
 
-import Logo from "../assets/logo.svg"
-import Lines from "../assets/lines.svg"
+import Logo from "../../assets/logo.svg"
+import Lines from "../../assets/lines.svg"
 
 const Foot = styled.footer`
   font-family: ${props => props.theme.fonts.apercu};
-  width: ${props => props.theme.breakpoints.desktop};
+  width: ${props => props.theme.container.width};
+  max-width: ${props => props.theme.container.maxWidth};
   margin: 0 auto;
 
   h2,
@@ -34,10 +35,16 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 `
 
 const Third = styled.div`
   width: 32%;
+  min-width: 288px;
+  flex-grow: 1;
+  &:not(:last-of-type) {
+    margin-right: 1rem;
+  }
 
   h2 {
     padding-bottom: 1.5rem;

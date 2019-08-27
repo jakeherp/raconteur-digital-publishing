@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import "./layout.css"
 
-import { Provider } from "../hoc/context"
+import { Provider } from "../../hoc/context"
 import Footer from "./footer"
 
 interface IProps {
@@ -11,16 +11,20 @@ interface IProps {
 
 const theme = {
   breakpoints: {
-    desktop: `966px`,
+    desktop: `992px`,
     tablet: `768px`,
     phone: `576px`,
+  },
+  container: {
+    width: `966px`,
+    maxWidth: `90%`,
   },
   colors: {
     black: `#000000`,
     darkGrey: `#404040`,
     lightGrey: `#f6f5f5`,
     mediumGrey: `#d8d8d8`,
-    primary: `#78c8d7`,
+    primary: `#040095`,
     secondary: `#e64150`,
     white: `#ffffff`,
   },

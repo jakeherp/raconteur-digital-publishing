@@ -1,14 +1,18 @@
 import React from "react"
 
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
+
+import Homescreen from "../components/sections/homescreen"
+import TableOfContents from "../components/sections/table-of-contents"
+import Article from "../components/sections/article"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <Homescreen />
+    <TableOfContents />
+    <Article />
   </Layout>
 )
 
