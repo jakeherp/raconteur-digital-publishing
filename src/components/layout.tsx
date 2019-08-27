@@ -25,8 +25,8 @@ const theme = {
     white: `#ffffff`,
   },
   fonts: {
-    body: `"Apercu", sans-serif`,
-    medium: `"Apercu-Medium", sans-serif`,
+    tiempos: `"Tiempos", serif`,
+    apercu: `"Apercu", sans-serif`,
   },
 }
 
