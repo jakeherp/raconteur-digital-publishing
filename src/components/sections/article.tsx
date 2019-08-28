@@ -38,6 +38,15 @@ const Content = styled.div`
   margin-left: 3rem;
   border-left: 1px solid #000;
 
+  & > div > p:first-of-type::first-letter {
+    font-size: 4rem;
+    font-weight: bold;
+    float: left;
+    line-height: 4rem;
+    color: ${props => props.theme.colors.primary};
+    margin-right: 0.5rem;
+  }
+
   aside {
     min-width: 250px;
     border-left: 1px solid #000;
@@ -78,15 +87,6 @@ const Content = styled.div`
 
 const Author = styled.strong`
   font-family: ${props => props.theme.fonts.apercu};
-`
-
-const Dropcap = styled.span`
-  font-size: 4rem;
-  font-weight: bold;
-  float: left;
-  line-height: 4rem;
-  color: ${props => props.theme.colors.primary};
-  margin-right: 0.5rem;
 `
 
 const Quote = styled.blockquote`
@@ -145,12 +145,11 @@ const Article = () => {
             <Author>Author Name</Author>
             <Lines />
             <p>
-              <Dropcap>I</Dropcap>n 2010 Angela Armstrong, a high-flying
-              leadership development consultant at Accenture, found herself
-              literally ‘burnt out’. “It was classic biting off more than I
-              could chew,” she recalls. “I had a big role but no balance. I
-              crashed. I was off work for three months, and it took a further
-              three months to complete my return.”
+              In 2010 Angela Armstrong, a high-flying leadership development
+              consultant at Accenture, found herself literally ‘burnt out’. “It
+              was classic biting off more than I could chew,” she recalls. “I
+              had a big role but no balance. I crashed. I was off work for three
+              months, and it took a further three months to complete my return.”
             </p>
             <p>
               Today Armstrong is a leading coach, the best-selling author of The
