@@ -118,9 +118,12 @@ const Footer = () => (
             </List>
           </Third>
           {context.report.contributors.map(
-            (contributor: { name: React.ReactNode; bio: React.ReactNode }) => (
+            (
+              contributor: { name: React.ReactNode; bio: React.ReactNode },
+              index: number
+            ) => (
               <Third>
-                <h2>Contributors</h2>
+                <h2>{index === 0 ? `Contributors` : ` `}</h2>
                 <h3>{contributor.name}</h3>
                 <p>{contributor.bio}</p>
               </Third>

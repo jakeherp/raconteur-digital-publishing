@@ -6,7 +6,7 @@ import Container from "../layout/container"
 import Lines from "../../assets/lines.svg"
 
 const Section = styled.section`
-  margin: 4.75rem 0;
+  padding: 4.75rem 0;
 
   h2 {
     font-size: 60px;

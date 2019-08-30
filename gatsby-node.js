@@ -1,7 +1,36 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`)
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const reportTemplate = path.resolve(`./src/templates/report.tsx`)
+
+  return graphql(`
+    {
+      allContentfulReport {
+        edges {
+          node {
+            slug
+            title
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+
+    const reports = result.data.allContentfulReport.edges
+
+    reports.forEach(report => {
+      createPage({
+        path: `${report.node.slug}`,
+        component: reportTemplate,
+        context: {
+          slug: report.node.slug,
+        },
+      })
+    })
+  })
+}

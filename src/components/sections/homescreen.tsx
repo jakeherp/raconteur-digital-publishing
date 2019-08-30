@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 
 import LogoSvg from "../../assets/logo.svg"
@@ -35,14 +36,24 @@ const Scroll = styled(ScrollDown)`
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  transition: 0.5s;
+  &:hover {
+    margin-bottom: 0.5rem;
+  }
 `
 
-const Homescreen = () => {
+interface IProps {
+  slug: string
+}
+
+const Homescreen = ({ slug }: IProps) => {
   return (
     <HomeScreen>
       <Logo />
       <h1>Championing Mental Health in SMEs</h1>
-      <Scroll />
+      <Link to={`/${slug}/#table-of-contents`}>
+        <Scroll />
+      </Link>
     </HomeScreen>
   )
 }
