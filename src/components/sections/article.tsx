@@ -13,6 +13,10 @@ import Blockquote from "../article/quote"
 
 import Lines from "../../assets/lines.svg"
 
+const Section = styled.article`
+  margin-bottom: 5rem;
+`
+
 const Header = styled.header`
   position: relative;
   overflow: hidden;
@@ -51,7 +55,9 @@ const Author = styled.strong`
 interface IProps {
   title: string
   slug: string
-  standfirst: object
+  standFirst: {
+    standFirst: string
+  }
   featuredImage: {
     fluid: any
   }
@@ -68,7 +74,7 @@ interface IProps {
     content: {
       json: any
     }
-  }
+  } | null
 }
 
 const Article = ({ ...props }: IProps) => {
@@ -82,7 +88,7 @@ const Article = ({ ...props }: IProps) => {
   }
 
   return (
-    <article id="burnout-is-now-a-hot-business-issue">
+    <Section id={props.slug}>
       <Header>
         <Img fluid={props.featuredImage.fluid} />
       </Header>
@@ -90,15 +96,17 @@ const Article = ({ ...props }: IProps) => {
         <Headline>
           <h1>{props.title}</h1>
         </Headline>
-        <StandFirst>{props.standfirst}</StandFirst>
+        {/* <StandFirst>{props.standFirst.standFirst}</StandFirst> */}
         <Content>
           <div>
             <Author>{props.author}</Author>
             <Lines />
             {documentToReactComponents(props.content.json, options)}
-            <BoxOut title={props.boxOut.title}>
-              {documentToReactComponents(props.boxOut.content.json, options)}
-            </BoxOut>
+            {props.boxOut !== null && (
+              <BoxOut title={props.boxOut.title}>
+                {documentToReactComponents(props.boxOut.content.json, options)}
+              </BoxOut>
+            )}
           </div>
           <Sidebar
             reportTitle="Championing Mental Health in SMEs"
@@ -106,7 +114,7 @@ const Article = ({ ...props }: IProps) => {
           />
         </Content>
       </Container>
-    </article>
+    </Section>
   )
 }
 

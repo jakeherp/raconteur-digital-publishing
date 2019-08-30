@@ -61,68 +61,45 @@ const Text = styled.div`
   }
 `
 
-const TableOfContents = () => {
+interface IProps {
+  articles: {
+    title: string
+    slug: string
+    standfirst: object
+    featuredImage: {
+      fluid: any
+    }
+    author: {
+      name: string
+    }
+    content: {
+      json: any
+    }
+    boxOut: {
+      title: string
+      copy: {
+        json: any
+      }
+    } | null
+  }[]
+}
+
+const TableOfContents = ({ articles }: IProps) => {
   return (
     <Section id="table-of-contents">
       <Container>
         <h2>Contents</h2>
         <Lines />
         <List>
-          <li>
-            <Bullet>1</Bullet>
-            <Text>
-              <h3>Burnout is now a hot business issue</h3>
-              <p>
-                Startup entrepreneurs are at risk of taking on too much and
-                ending up suffering burnout, unless they learn how to take the
-                pressure off
-              </p>
-            </Text>
-          </li>
-          <li>
-            <Bullet>2</Bullet>
-            <Text>
-              <h3>Burnout is now a hot business issue</h3>
-              <p>
-                Startup entrepreneurs are at risk of taking on too much and
-                ending up suffering burnout, unless they learn how to take the
-                pressure off
-              </p>
-            </Text>
-          </li>
-          <li>
-            <Bullet>3</Bullet>
-            <Text>
-              <h3>Burnout is now a hot business issue</h3>
-              <p>
-                Startup entrepreneurs are at risk of taking on too much and
-                ending up suffering burnout, unless they learn how to take the
-                pressure off
-              </p>
-            </Text>
-          </li>
-          <li>
-            <Bullet>4</Bullet>
-            <Text>
-              <h3>Burnout is now a hot business issue</h3>
-              <p>
-                Startup entrepreneurs are at risk of taking on too much and
-                ending up suffering burnout, unless they learn how to take the
-                pressure off
-              </p>
-            </Text>
-          </li>
-          <li>
-            <Bullet>5</Bullet>
-            <Text>
-              <h3>Burnout is now a hot business issue</h3>
-              <p>
-                Startup entrepreneurs are at risk of taking on too much and
-                ending up suffering burnout, unless they learn how to take the
-                pressure off
-              </p>
-            </Text>
-          </li>
+          {articles.map((article, index) => (
+            <li>
+              <Bullet>{index + 1}</Bullet>
+              <Text>
+                <h3>{article.title}</h3>
+                {/* <p>{article.standFirst.standFirst}</p> */}
+              </Text>
+            </li>
+          ))}
         </List>
       </Container>
     </Section>

@@ -40,7 +40,7 @@ interface IProps {
           copy: {
             json: any
           }
-        }
+        } | null
       }[]
       contributors: {
         name: string
@@ -67,7 +67,7 @@ const Report = ({ data }: IProps) => {
     <Layout>
       <SEO title="Home" />
       <Homescreen slug={report.slug} />
-      <TableOfContents />
+      <TableOfContents articles={articles} />
       {articles.map(article => (
         <Article
           key={article.slug}
@@ -78,7 +78,11 @@ const Report = ({ data }: IProps) => {
           author={article.author.name}
           content={article.content}
           allArticles={articles}
-          boxOut={{ title: article.boxOut.title, content: article.boxOut.copy }}
+          boxOut={
+            article.boxOut
+              ? { title: article.boxOut.title, content: article.boxOut.copy }
+              : null
+          }
         />
       ))}
     </Layout>
