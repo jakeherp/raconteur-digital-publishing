@@ -80,7 +80,11 @@ const Report = ({ data }: IProps) => {
     <Layout>
       <SEO title={report.title} />
       <Homescreen slug={report.slug} image={report.featuredImage} />
-      <TableOfContents articles={articles} color={report.color} />
+      <TableOfContents
+        articles={articles}
+        reportSlug={report.slug}
+        color={report.color}
+      />
       {articles.map(article => (
         <Article
           key={article.slug}

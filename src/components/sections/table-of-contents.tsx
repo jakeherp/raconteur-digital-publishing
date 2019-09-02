@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import Container from "../layout/container"
 import Animate from "../ui/animate-in"
@@ -27,8 +28,10 @@ const List = styled.ol`
   li {
     padding-bottom: 1rem;
     border-bottom: 1px solid #000;
-    display: flex;
-    flex-direction: row;
+    a {
+      display: flex;
+      flex-direction: row;
+    }
 
     &:nth-of-type(2n + 1) {
       margin-right: 1rem;
@@ -64,6 +67,7 @@ const Text = styled.div`
 
 interface IProps {
   color?: string
+  reportSlug: string
   articles: {
     title: string
     slug: string
@@ -88,7 +92,7 @@ interface IProps {
   }[]
 }
 
-const TableOfContents = ({ articles }: IProps) => {
+const TableOfContents = ({ articles, reportSlug }: IProps) => {
   return (
     <Section id="table-of-contents">
       <Container>
@@ -99,11 +103,13 @@ const TableOfContents = ({ articles }: IProps) => {
         <List>
           {articles.map((article, index) => (
             <li key={index}>
-              <Bullet>{index + 1}</Bullet>
-              <Text>
-                <h3>{article.title}</h3>
-                <p>{article.standFirst.standFirst}</p>
-              </Text>
+              <Link to={`/${reportSlug}/#${article.slug}`}>
+                <Bullet>{index + 1}</Bullet>
+                <Text>
+                  <h3>{article.title}</h3>
+                  <p>{article.standFirst.standFirst}</p>
+                </Text>
+              </Link>
             </li>
           ))}
         </List>
