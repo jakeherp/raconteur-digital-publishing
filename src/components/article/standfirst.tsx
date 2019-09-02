@@ -4,6 +4,7 @@ import styled from "styled-components"
 const Standfirst = styled.p`
   font-size: 1.8rem;
   line-height: 1.25;
+  margin-bottom: 5rem;
 `
 
 interface IProps {

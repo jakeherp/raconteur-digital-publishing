@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
+import Animate from "../ui/animate-in"
+
 const ShortArticle = styled.div`
   background: ${props => props.theme.colors.primary};
   color: #fff;
@@ -26,7 +28,9 @@ interface IProps {
 const BoxOut = ({ title, children }: IProps) => {
   return (
     <ShortArticle>
-      <h2>{title}</h2>
+      <Animate>
+        <h2>{title}</h2>
+      </Animate>
       {children}
     </ShortArticle>
   )

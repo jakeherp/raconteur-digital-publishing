@@ -10,6 +10,7 @@ import StandFirst from "../article/standfirst"
 import Content from "../article/content"
 import BoxOut from "../article/boxout"
 import Blockquote from "../article/quote"
+import Animate from "../ui/animate-in"
 
 import Lines from "../../assets/lines.svg"
 
@@ -55,9 +56,8 @@ const Author = styled.strong`
 interface IProps {
   title: string
   slug: string
-  standFirst: {
-    standFirst: string
-  }
+  reportSlug: string
+  standfirst: string
   featuredImage: {
     fluid: any
   }
@@ -93,10 +93,14 @@ const Article = ({ ...props }: IProps) => {
         <Img fluid={props.featuredImage.fluid} />
       </Header>
       <Container>
-        <Headline>
-          <h1>{props.title}</h1>
-        </Headline>
-        {/* <StandFirst>{props.standFirst.standFirst}</StandFirst> */}
+        <Animate>
+          <Headline>
+            <h1>{props.title}</h1>
+          </Headline>
+        </Animate>
+        <Animate>
+          <StandFirst>{props.standfirst}</StandFirst>
+        </Animate>
         <Content>
           <div>
             <Author>{props.author}</Author>
@@ -110,6 +114,7 @@ const Article = ({ ...props }: IProps) => {
           </div>
           <Sidebar
             reportTitle="Championing Mental Health in SMEs"
+            reportSlug={props.reportSlug}
             articleList={props.allArticles}
           />
         </Content>

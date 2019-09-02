@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+import Animate from "../ui/animate-in"
+
 const Aside = styled.aside`
   min-width: 250px;
   border-left: 1px solid #000;
@@ -34,30 +36,41 @@ const Aside = styled.aside`
   }
 `
 
+const Sticky = styled.div`
+  position: sticky;
+  top: 1rem;
+  height: auto;
+`
+
 interface IProps {
   reportTitle: string
+  reportSlug: string
   articleList: {
     title: string
     slug: string
   }[]
 }
 
-const Sidebar = ({ reportTitle, articleList }: IProps) => {
+const Sidebar = ({ reportTitle, articleList, reportSlug }: IProps) => {
   return (
     <Aside>
-      <h2>{reportTitle}</h2>
-      <nav>
-        <ul>
-          {articleList.map((article, i) => (
-            <li>
-              <Link to={`/#${article.slug}`}>
-                <span>{i + 1}</span>
-                <span>{article.title}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <Sticky>
+        <Animate>
+          <h2>{reportTitle}</h2>
+        </Animate>
+        <nav>
+          <ul>
+            {articleList.map((article, index) => (
+              <li key={index}>
+                <Link to={`/${reportSlug}/#${article.slug}`}>
+                  <span>{index + 1}</span>
+                  <span>{article.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </Sticky>
     </Aside>
   )
 }

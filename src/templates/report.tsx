@@ -5,6 +5,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout/layout"
+import Footer from "../components/layout/footer"
 import SEO from "../components/seo"
 
 import Homescreen from "../components/sections/homescreen"
@@ -18,14 +19,20 @@ interface IProps {
       slug: string
       color: string
       sponsoredBy: {
-        logo: object
+        logo: {
+          file: {
+            url: string
+          }
+        }
         name: string
         slug: string
       }
       articles: {
         title: string
         slug: string
-        standfirst: object
+        standFirst: {
+          standFirst: string
+        }
         featuredImage: {
           fluid: any
         }
@@ -44,7 +51,9 @@ interface IProps {
       }[]
       contributors: {
         name: string
-        bio: object
+        bio: {
+          bio: string
+        }
       }[]
       publisher: string
       projectManager: string
@@ -61,19 +70,18 @@ const Report = ({ data }: IProps) => {
   const report = data.contentfulReport
   const articles = report.articles
 
-  console.log(data)
-
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={report.title} />
       <Homescreen slug={report.slug} />
-      <TableOfContents articles={articles} />
+      <TableOfContents articles={articles} color={report.color} />
       {articles.map(article => (
         <Article
           key={article.slug}
           title={article.title}
           slug={article.slug}
-          standfirst={article.standfirst}
+          reportSlug={report.slug}
+          standfirst={article.standFirst.standFirst}
           featuredImage={article.featuredImage}
           author={article.author.name}
           content={article.content}
@@ -85,6 +93,18 @@ const Report = ({ data }: IProps) => {
           }
         />
       ))}
+      <Footer
+        sponsoredBy={report.sponsoredBy}
+        // footerText={report.footerText}
+        publisher={report.publisher}
+        projectManager={report.projectManager}
+        editorialConsultant={report.editorialConsultant}
+        editor={report.editor}
+        designers={report.designers}
+        headOfProduction={report.headOfProduction}
+        digitalMarketingManager={report.digitalMarketingManager}
+        contributors={report.contributors}
+      />
     </Layout>
   )
 }
@@ -99,8 +119,8 @@ export const reportQuery = graphql`
       color
       sponsoredBy {
         logo {
-          fluid {
-            ...GatsbyContentfulFluid
+          file {
+            url
           }
         }
         name

@@ -3,7 +3,6 @@ import { ThemeProvider } from "styled-components"
 import "./layout.css"
 
 import { Provider } from "../../hoc/context"
-import Footer from "./footer"
 
 interface IProps {
   children: React.ReactNode
@@ -40,7 +39,6 @@ const Layout = ({ children }: IProps) => {
       <Provider>
         <React.Fragment>
           <main>{children}</main>
-          <Footer />
         </React.Fragment>
       </Provider>
     </ThemeProvider>

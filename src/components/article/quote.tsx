@@ -16,7 +16,7 @@ const Blockquote = styled.blockquote`
   margin-left: -4rem;
   font-size: 24px;
   font-weight: bold;
-  line-height: 1.3rem;
+  line-height: 1.5rem;
 
   svg {
     position: absolute;

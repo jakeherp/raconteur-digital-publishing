@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-import Context from "../../hoc/context"
-
 import Logo from "../../assets/logo.svg"
 import Lines from "../../assets/lines.svg"
 
@@ -71,69 +69,78 @@ const List = styled.ul`
   }
 `
 
-const Footer = () => (
-  <Context.Consumer>
-    {context => (
-      <Foot>
-        <Border />
-        <div>
-          <h3>Publication sponsored by</h3>
-          {context.report.sponsoredBy}
-        </div>
-        <Columns>{context.report.footerText}</Columns>
-        <Wrapper>
-          <Third>
-            <h2>
-              <Logo />
-            </h2>
-            <List>
-              <li>
-                <h3>Publisher</h3> {context.report.publisher}
-              </li>
-              <li>
-                <h3>Project manager</h3> {context.report.projectManager}
-              </li>
-              <li>
-                <h3>Editorial consultant</h3>{" "}
-                {context.report.editorialConsultant}
-              </li>
-              <li>
-                <h3>Editor</h3> {context.report.editor}
-              </li>
-              <li>
-                <h3>Designers</h3>{" "}
-                {context.report.designers.map(
-                  (designer: React.ReactNode, i: number) => (
-                    <span key={i}>{designer}</span>
-                  )
-                )}
-              </li>
-              <li>
-                <h3>Head of production</h3> {context.report.headOfProduction}
-              </li>
-              <li>
-                <h3>Digital marketing manager</h3>{" "}
-                {context.report.digitalMarketingManager}
-              </li>
-            </List>
-          </Third>
-          {context.report.contributors.map(
-            (
-              contributor: { name: React.ReactNode; bio: React.ReactNode },
-              index: number
-            ) => (
-              <Third>
-                <h2>{index === 0 ? `Contributors` : ` `}</h2>
-                <h3>{contributor.name}</h3>
-                <p>{contributor.bio}</p>
-              </Third>
-            )
-          )}
-        </Wrapper>
-        <Border />
-      </Foot>
-    )}
-  </Context.Consumer>
+interface IProps {
+  sponsoredBy: {
+    name: string
+    logo: any
+    slug: string
+  }
+  footerText?: string
+  publisher: string
+  projectManager: string
+  editorialConsultant: string
+  editor: string
+  designers: string[]
+  headOfProduction: string
+  digitalMarketingManager: string
+  contributors: {
+    name: string
+    bio: {
+      bio: string
+    }
+  }[]
+}
+
+const Footer = ({ ...props }: IProps) => (
+  <Foot>
+    <Border />
+    <div>
+      <h3>Publication sponsored by</h3>
+      <img src={props.sponsoredBy.logo.file.url} />
+    </div>
+    <Columns>{props.footerText}</Columns>
+    <Wrapper>
+      <Third>
+        <h2>
+          <Logo />
+        </h2>
+        <List>
+          <li>
+            <h3>Publisher</h3> {props.publisher}
+          </li>
+          <li>
+            <h3>Project manager</h3> {props.projectManager}
+          </li>
+          <li>
+            <h3>Editorial consultant</h3> {props.editorialConsultant}
+          </li>
+          <li>
+            <h3>Editor</h3> {props.editor}
+          </li>
+          <li>
+            <h3>Designers</h3>{" "}
+            {props.designers.map((designer: React.ReactNode, i: number) => (
+              <span key={i}>{designer}</span>
+            ))}
+          </li>
+          <li>
+            <h3>Head of production</h3> {props.headOfProduction}
+          </li>
+          <li>
+            <h3>Digital marketing manager</h3> {props.digitalMarketingManager}
+          </li>
+        </List>
+      </Third>
+      {props.contributors.map((contributor, index) => (
+        <Third key={index}>
+          <h2>{index === 0 ? `Contributors` : ` `}</h2>
+          <h3>{contributor.name}</h3>
+          <p>{contributor.bio.bio}</p>
+        </Third>
+      ))}
+    </Wrapper>
+    <Border />
+  </Foot>
 )
 
 export default Footer

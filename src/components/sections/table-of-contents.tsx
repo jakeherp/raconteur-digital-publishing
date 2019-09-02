@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import Container from "../layout/container"
+import Animate from "../ui/animate-in"
 
 import Lines from "../../assets/lines.svg"
 
@@ -62,10 +63,13 @@ const Text = styled.div`
 `
 
 interface IProps {
+  color?: string
   articles: {
     title: string
     slug: string
-    standfirst: object
+    standFirst: {
+      standFirst: string
+    }
     featuredImage: {
       fluid: any
     }
@@ -88,15 +92,17 @@ const TableOfContents = ({ articles }: IProps) => {
   return (
     <Section id="table-of-contents">
       <Container>
-        <h2>Contents</h2>
+        <Animate>
+          <h2>Contents</h2>
+        </Animate>
         <Lines />
         <List>
           {articles.map((article, index) => (
-            <li>
+            <li key={index}>
               <Bullet>{index + 1}</Bullet>
               <Text>
                 <h3>{article.title}</h3>
-                {/* <p>{article.standFirst.standFirst}</p> */}
+                <p>{article.standFirst.standFirst}</p>
               </Text>
             </li>
           ))}
