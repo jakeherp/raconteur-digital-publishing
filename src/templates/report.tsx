@@ -18,6 +18,9 @@ interface IProps {
       title: string
       slug: string
       color: string
+      featuredImage: {
+        fluid: any
+      }
       sponsoredBy: {
         logo: {
           file: {
@@ -49,6 +52,9 @@ interface IProps {
           }
         } | null
       }[]
+      footerText: {
+        footerText: string
+      }
       contributors: {
         name: string
         bio: {
@@ -57,7 +63,7 @@ interface IProps {
       }[]
       publisher: string
       projectManager: string
-      editorialConsultant: string
+      editorialConsultant?: string
       editor: string
       designers: string[]
       headOfProduction: string
@@ -73,7 +79,7 @@ const Report = ({ data }: IProps) => {
   return (
     <Layout>
       <SEO title={report.title} />
-      <Homescreen slug={report.slug} />
+      <Homescreen slug={report.slug} image={report.featuredImage} />
       <TableOfContents articles={articles} color={report.color} />
       {articles.map(article => (
         <Article
@@ -95,7 +101,7 @@ const Report = ({ data }: IProps) => {
       ))}
       <Footer
         sponsoredBy={report.sponsoredBy}
-        // footerText={report.footerText}
+        footerText={report.footerText.footerText}
         publisher={report.publisher}
         projectManager={report.projectManager}
         editorialConsultant={report.editorialConsultant}
@@ -117,6 +123,11 @@ export const reportQuery = graphql`
       title
       slug
       color
+      featuredImage {
+        fluid(maxWidth: 1920, maxHeight: 1080, quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+      }
       sponsoredBy {
         logo {
           file {
@@ -151,6 +162,9 @@ export const reportQuery = graphql`
           }
         }
       }
+      footerText {
+        footerText
+      }
       contributors {
         name
         bio {
@@ -159,7 +173,6 @@ export const reportQuery = graphql`
       }
       publisher
       projectManager
-      editorialConsultant
       editor
       designers
       headOfProduction

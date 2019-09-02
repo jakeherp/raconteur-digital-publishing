@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import styled from "styled-components"
 
 import LogoSvg from "../../assets/logo.svg"
@@ -7,10 +8,10 @@ import ScrollDown from "../../assets/scroll-down.svg"
 
 const HomeScreen = styled.section`
   position: relative;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   padding: 2rem;
-  background: #656abe;
 
   h1 {
     width: 460px;
@@ -20,6 +21,15 @@ const HomeScreen = styled.section`
     display: block;
     margin: 0 auto;
     font-size: 65px;
+  }
+
+  .gatsby-image-wrapper {
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
 `
 
@@ -44,9 +54,10 @@ const Scroll = styled(ScrollDown)`
 
 interface IProps {
   slug: string
+  image: any
 }
 
-const Homescreen = ({ slug }: IProps) => {
+const Homescreen = ({ slug, image }: IProps) => {
   return (
     <HomeScreen>
       <Logo />
@@ -54,6 +65,7 @@ const Homescreen = ({ slug }: IProps) => {
       <Link to={`/${slug}/#table-of-contents`}>
         <Scroll />
       </Link>
+      <Img fluid={image.fluid} />
     </HomeScreen>
   )
 }

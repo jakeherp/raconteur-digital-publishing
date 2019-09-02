@@ -75,10 +75,10 @@ interface IProps {
     logo: any
     slug: string
   }
-  footerText?: string
+  footerText: string
   publisher: string
   projectManager: string
-  editorialConsultant: string
+  editorialConsultant?: string
   editor: string
   designers: string[]
   headOfProduction: string
@@ -111,9 +111,11 @@ const Footer = ({ ...props }: IProps) => (
           <li>
             <h3>Project manager</h3> {props.projectManager}
           </li>
-          <li>
-            <h3>Editorial consultant</h3> {props.editorialConsultant}
-          </li>
+          {props.editorialConsultant !== undefined && (
+            <li>
+              <h3>Editorial consultant</h3> {props.editorialConsultant}
+            </li>
+          )}
           <li>
             <h3>Editor</h3> {props.editor}
           </li>
