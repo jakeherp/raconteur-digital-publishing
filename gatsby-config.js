@@ -6,6 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Raconteur Reports`,
     description: `Report platform for Raconteur`,
+    siteUrl: `https://raconteur-reports.netlify.com`,
     author: `Jacob Herper <jacob@herper.io>`,
   },
   plugins: [
