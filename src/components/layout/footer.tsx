@@ -120,10 +120,10 @@ const Footer = ({ ...props }: IProps) => (
             <h3>Editor</h3> {props.editor}
           </li>
           <li>
-            <h3>Designers</h3>{" "}
-            {props.designers.map((designer: React.ReactNode, i: number) => (
+            <h3>Designers</h3> {props.designers.join(", ")}
+            {/* {props.designers.map((designer: React.ReactNode, i: number) => (
               <span key={i}>{designer}</span>
-            ))}
+            ))} */}
           </li>
           <li>
             <h3>Head of production</h3> {props.headOfProduction}
