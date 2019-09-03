@@ -12,6 +12,8 @@ import Homescreen from "../components/sections/homescreen"
 import TableOfContents from "../components/sections/table-of-contents"
 import Article from "../components/sections/article"
 
+import Hype from "../components/ui/hype"
+
 interface IProps {
   data: {
     contentfulReport: {
