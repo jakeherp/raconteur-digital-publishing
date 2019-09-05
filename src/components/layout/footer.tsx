@@ -38,36 +38,18 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `
 
-const Third = styled.div`
-  width: 32%;
+const Column = styled.div`
   min-width: 288px;
   flex-grow: 1;
   &:not(:last-of-type) {
     margin-right: 1rem;
   }
-
-  h2 {
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #000;
-    height: 50px;
-    margin-bottom: 1rem;
-    svg {
-      width: 215px;
-      height: 28px;
-    }
+  &:first-of-type {
+    width: 32%;
   }
-`
-
-const List = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    margin-bottom: 0;
-    h3 {
-      display: inline-block;
-    }
+  svg {
+    width: 215px;
+    height: 28px;
   }
 `
 
@@ -78,18 +60,9 @@ interface IProps {
     slug: string
   }
   footerText: string
-  publisher: string
-  projectManager: string
-  editorialConsultant?: string
-  editor: string
-  designers: string[]
-  headOfProduction: string
-  digitalMarketingManager: string
   contributors: {
     name: string
-    bio: {
-      bio: string
-    }
+    bio: string
   }[]
 }
 
@@ -102,46 +75,13 @@ const Footer = ({ ...props }: IProps) => (
     </div>
     <Columns>{props.footerText}</Columns>
     <Wrapper>
-      <Third>
-        <h2>
-          <Logo />
-        </h2>
-        <List>
-          <li>
-            <h3>Publisher</h3> {props.publisher}
-          </li>
-          <li>
-            <h3>Project manager</h3> {props.projectManager}
-          </li>
-          {props.editorialConsultant !== undefined && (
-            <li>
-              <h3>Editorial consultant</h3> {props.editorialConsultant}
-            </li>
-          )}
-          <li>
-            <h3>Editor</h3> {props.editor}
-          </li>
-          <li>
-            <h3>Designers</h3> {props.designers.join(", ")}
-            {/* {props.designers.map((designer: React.ReactNode, i: number) => (
-              <span key={i}>{designer}</span>
-            ))} */}
-          </li>
-          <li>
-            <h3>Head of production</h3> {props.headOfProduction}
-          </li>
-          <li>
-            <h3>Digital marketing manager</h3> {props.digitalMarketingManager}
-          </li>
-        </List>
-      </Third>
-      {props.contributors.map((contributor, index) => (
-        <Third key={index}>
-          <h2>{index === 0 ? `Contributors` : ` `}</h2>
-          <h3>{contributor.name}</h3>
-          <p>{contributor.bio.bio}</p>
-        </Third>
-      ))}
+      <Column>
+        <Logo />
+      </Column>
+      <Column>
+        <strong>Contributors: </strong>
+        {props.contributors.map(contributor => contributor.name).join(", ")}
+      </Column>
     </Wrapper>
     <Border />
   </Foot>

@@ -63,13 +63,6 @@ interface IProps {
           bio: string
         }
       }[]
-      publisher: string
-      projectManager: string
-      editorialConsultant?: string
-      editor: string
-      designers: string[]
-      headOfProduction: string
-      digitalMarketingManager: string
     }
   }
 }
@@ -108,13 +101,6 @@ const Report = ({ data }: IProps) => {
       <Footer
         sponsoredBy={report.sponsoredBy}
         footerText={report.footerText.footerText}
-        publisher={report.publisher}
-        projectManager={report.projectManager}
-        editorialConsultant={report.editorialConsultant}
-        editor={report.editor}
-        designers={report.designers}
-        headOfProduction={report.headOfProduction}
-        digitalMarketingManager={report.digitalMarketingManager}
         contributors={report.contributors}
       />
     </Layout>

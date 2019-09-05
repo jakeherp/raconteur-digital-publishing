@@ -20,7 +20,13 @@ const HomeScreen = styled.section`
     text-align: center;
     display: block;
     margin: 0 auto;
-    font-size: 65px;
+    font-size: 35px;
+    @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+      font-size: 55px;
+    }
+    @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+      font-size: 65px;
+    }
   }
 
   .gatsby-image-wrapper {
