@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import "./layout.css"
 
-import { Provider } from "../../hoc/context"
+import * as Context from "../../hoc/context"
 
 interface IProps {
   children: React.ReactNode
@@ -36,11 +36,11 @@ const theme = {
 const Layout = ({ children }: IProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <Provider>
+      <Context.Provider>
         <React.Fragment>
           <main>{children}</main>
         </React.Fragment>
-      </Provider>
+      </Context.Provider>
     </ThemeProvider>
   )
 }

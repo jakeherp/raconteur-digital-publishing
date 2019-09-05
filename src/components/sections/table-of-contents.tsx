@@ -19,7 +19,7 @@ const Section = styled.section`
 const List = styled.ol`
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2rem 0 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-column-gap: 1rem;

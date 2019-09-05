@@ -25,7 +25,7 @@ const AnimateIn = ({ children, duration, bottomOffset }: IProps) => {
     <React.Fragment>
       <Waypoint
         onEnter={() => show(true)}
-        bottomOffset={bottomOffset ? bottomOffset : `25%`}
+        bottomOffset={bottomOffset ? bottomOffset : `10%`}
       />
       <Anim
         className={on ? "in" : undefined}
