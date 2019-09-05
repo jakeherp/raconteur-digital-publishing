@@ -59,6 +59,7 @@ const Bullet = styled.span`
 `
 
 const Text = styled.div`
+  padding-top: 0.5rem;
   h3 {
     font-size: 1.75rem;
     margin-bottom: 1rem;

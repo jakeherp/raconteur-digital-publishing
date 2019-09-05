@@ -115,6 +115,7 @@ const Article = ({ ...props }: IProps) => {
           <Sidebar
             reportTitle="Championing Mental Health in SMEs"
             reportSlug={props.reportSlug}
+            currentArticle={props.slug}
             articleList={props.allArticles}
           />
         </Content>
