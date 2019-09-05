@@ -47,15 +47,13 @@ const Context = createContext<any>({})
 const Provider = ({ children }: IProps) => {
   const [report, setReport] = useState<IReport | undefined>(undefined)
 
-  const handleReport = (currentReport: IReport) => {
-    setReport(currentReport)
-  }
-
   return (
     <Context.Provider
       value={{
         report,
-        handleReport,
+        loadReport: (currentReport: IReport) => {
+          setReport(currentReport)
+        },
       }}
     >
       {children}
