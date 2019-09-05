@@ -23,7 +23,7 @@ const theme = {
     darkGrey: `#404040`,
     lightGrey: `#f6f5f5`,
     mediumGrey: `#d8d8d8`,
-    primary: `#040095`,
+    primary: `#040095`, // (context: any) => context.report.primaryColor
     secondary: `#e64150`,
     white: `#ffffff`,
   },
@@ -35,13 +35,13 @@ const theme = {
 
 const Layout = ({ children }: IProps) => {
   return (
-    <ThemeProvider theme={theme}>
-      <Context.Provider>
+    <Context.Provider>
+      <ThemeProvider theme={theme}>
         <React.Fragment>
           <main>{children}</main>
         </React.Fragment>
-      </Context.Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Context.Provider>
   )
 }
 
