@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-import Animate from "../ui/animate-in"
-
 const Aside = styled.aside`
   min-width: 250px;
   border-left: 1px solid #000;
@@ -66,9 +64,7 @@ const Sidebar = ({
   return (
     <Aside>
       <Sticky>
-        <Animate>
-          <h2>{reportTitle}</h2>
-        </Animate>
+        <h2>{reportTitle}</h2>
         <nav>
           <ul>
             {articleList.map((article, index) => (
