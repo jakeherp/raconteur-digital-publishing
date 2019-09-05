@@ -17,6 +17,10 @@ const Foot = styled.footer`
     font-weight: bold;
     margin: 0;
   }
+
+  .sponsored-by {
+    margin-bottom: 1rem;
+  }
 `
 
 const Border = styled(Lines)`
@@ -24,8 +28,6 @@ const Border = styled(Lines)`
 `
 
 const Columns = styled.div`
-  column-count: 2;
-  column-gap: 2rem;
   margin-bottom: 4.75rem;
 `
 
@@ -95,7 +97,7 @@ const Footer = ({ ...props }: IProps) => (
   <Foot>
     <Border />
     <div>
-      <h3>Publication sponsored by</h3>
+      <h3 className="sponsored-by">Publication sponsored by</h3>
       <img src={props.sponsoredBy.logo.file.url} />
     </div>
     <Columns>{props.footerText}</Columns>

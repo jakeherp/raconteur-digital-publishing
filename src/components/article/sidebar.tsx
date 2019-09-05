@@ -22,8 +22,8 @@ const Aside = styled.aside`
       padding: 1rem;
       margin: 0;
       border-bottom: 1px solid #000;
-      &:first-of-type {
-        border-top: 1px solid #000;
+      &:last-of-type {
+        border-bottom: none;
       }
       &.active {
         background: ${props => props.theme.colors.primary};

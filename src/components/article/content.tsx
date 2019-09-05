@@ -4,8 +4,10 @@ import styled from "styled-components"
 const Article = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 3rem;
-  border-left: 1px solid #000;
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    margin-left: 3rem;
+    border-left: 1px solid #000;
+  }
 
   & > div > p:first-of-type::first-letter {
     font-size: 4rem;
@@ -20,6 +22,14 @@ const Article = styled.div`
   strong,
   h2 {
     padding: 0 1rem;
+  }
+
+  aside {
+    display: none;
+
+    @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+      display: block;
+    }
   }
 `
 
