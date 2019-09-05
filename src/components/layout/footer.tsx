@@ -62,7 +62,9 @@ interface IProps {
   footerText: string
   contributors: {
     name: string
-    bio: string
+    bio: {
+      bio: string
+    }
   }[]
 }
 
