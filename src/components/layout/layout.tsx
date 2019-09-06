@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import "./layout.css"
 
-import * as Context from "../../hoc/context"
+import * as Context from "../../context/report.context"
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require

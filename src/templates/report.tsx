@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 // import { BLOCKS } from "@contentful/rich-text-types"
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 // import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
 import { graphql } from "gatsby"
+
+// import ReportContext from "../context/report.context"
 
 import Layout from "../components/layout/layout"
 import Footer from "../components/layout/footer"
@@ -70,6 +72,10 @@ interface IProps {
 const Report = ({ data }: IProps) => {
   const report = data.contentfulReport
   const articles = report.articles
+
+  // const { loadReport } = useContext(ReportContext)
+
+  // loadReport(report)
 
   return (
     <Layout>
