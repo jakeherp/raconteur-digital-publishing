@@ -5,7 +5,10 @@ interface IProps {
   children: React.ReactNode
 }
 
-const Context = createContext<any>({})
+const Context = createContext<any>({
+  report: undefined,
+  loadReport: () => {},
+})
 
 const Provider = ({ children }: IProps) => {
   const [report, setReport] = useState<IReport | undefined>(undefined)

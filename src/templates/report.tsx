@@ -1,10 +1,5 @@
-import React, { useContext } from "react"
-// import { BLOCKS } from "@contentful/rich-text-types"
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-// import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer"
+import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
-
-// import ReportContext from "../context/report.context"
 
 import Layout from "../components/layout/layout"
 import Footer from "../components/layout/footer"
@@ -14,17 +9,18 @@ import Homescreen from "../components/sections/homescreen"
 import TableOfContents from "../components/sections/table-of-contents"
 import Article from "../components/sections/article"
 
-// import Hype from "../components/ui/hype"
-
+import ReportContext from "../context/report.context"
 import IReport from "../interface/report.interface"
 
 const Report = ({ data }: IReport) => {
   const report = data.contentfulReport
   const articles = report.articles
 
-  // const { loadReport } = useContext(ReportContext)
+  const { loadReport } = useContext(ReportContext)
 
-  // loadReport(report)
+  useEffect(() => {
+    loadReport(report)
+  }, [report])
 
   return (
     <Layout>

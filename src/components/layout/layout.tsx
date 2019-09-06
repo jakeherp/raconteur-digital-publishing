@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import "./layout.css"
 
-import * as Context from "../../context/report.context"
+import { Provider } from "../../context/report.context"
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
@@ -40,13 +40,13 @@ const theme = {
 
 const Layout = ({ children }: IProps) => {
   return (
-    <Context.Provider>
+    <Provider>
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <main>{children}</main>
         </React.Fragment>
       </ThemeProvider>
-    </Context.Provider>
+    </Provider>
   )
 }
 
