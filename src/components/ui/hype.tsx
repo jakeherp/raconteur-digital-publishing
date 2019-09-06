@@ -14,20 +14,22 @@ interface IProps {
 }
 
 const Hype = ({ animationName }: IProps) => {
-  const script = document.createElement("script")
+  if (window !== undefined) {
+    const script = document.createElement("script")
 
-  script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/${animationName}.hyperesources/${animationName}_hype_generated_script.js`
-  script.async = true
+    script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/${animationName}.hyperesources/${animationName}_hype_generated_script.js`
+    script.async = true
 
-  const container: HTMLElement | null = document.getElementById(
-    `${animationName}_hype_container`
-  )
+    const container: HTMLElement | null = document.getElementById(
+      `${animationName}_hype_container`
+    )
 
-  useEffect(() => {
-    if (container !== null) {
-      container.appendChild(script)
-    }
-  }, [container])
+    useEffect(() => {
+      if (container !== null) {
+        container.appendChild(script)
+      }
+    }, [container])
+  }
 
   return (
     <div

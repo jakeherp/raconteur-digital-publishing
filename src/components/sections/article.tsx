@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
+import ReportContext from "../../context/report.context"
 import Container from "../layout/container"
 import Sidebar from "../article/sidebar"
 import StandFirst from "../article/standfirst"
@@ -90,6 +91,9 @@ const Article = ({ ...props }: IProps) => {
       ),
     },
   }
+
+  const { report } = useContext(ReportContext)
+  console.log(report)
 
   return (
     <Section id={props.slug}>
