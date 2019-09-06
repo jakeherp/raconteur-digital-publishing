@@ -4,6 +4,10 @@ import styled from "styled-components"
 import Logo from "../../assets/logo.svg"
 import Lines from "../../assets/lines.svg"
 
+import ISponsored from "../../interface/sponsored.interface"
+import IFooter from "../../interface/footer.interface"
+import IContributor from "../../interface/contributor.interface"
+
 const Foot = styled.footer`
   font-family: ${props => props.theme.fonts.apercu};
   width: ${props => props.theme.container.width};
@@ -54,18 +58,9 @@ const Column = styled.div`
 `
 
 interface IProps {
-  sponsoredBy: {
-    name: string
-    logo: any
-    slug: string
-  }
-  footerText: string
-  contributors: {
-    name: string
-    bio: {
-      bio: string
-    }
-  }[]
+  sponsoredBy: ISponsored
+  footerText: IFooter
+  contributors: IContributor[]
 }
 
 const Footer = ({ ...props }: IProps) => (

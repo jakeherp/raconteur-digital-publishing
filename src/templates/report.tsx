@@ -16,60 +16,9 @@ import Article from "../components/sections/article"
 
 // import Hype from "../components/ui/hype"
 
-interface IProps {
-  data: {
-    contentfulReport: {
-      title: string
-      slug: string
-      color: string
-      featuredImage: {
-        fluid: any
-      }
-      sponsoredBy: {
-        logo: {
-          file: {
-            url: string
-          }
-        }
-        name: string
-        slug: string
-      }
-      articles: {
-        title: string
-        slug: string
-        standFirst: {
-          standFirst: string
-        }
-        featuredImage: {
-          fluid: any
-        }
-        author: {
-          name: string
-        }
-        content: {
-          json: any
-        }
-        boxOut: {
-          title: string
-          copy: {
-            json: any
-          }
-        } | null
-      }[]
-      footerText: {
-        footerText: string
-      }
-      contributors: {
-        name: string
-        bio: {
-          bio: string
-        }
-      }[]
-    }
-  }
-}
+import IReport from "../interface/report.interface"
 
-const Report = ({ data }: IProps) => {
+const Report = ({ data }: IReport) => {
   const report = data.contentfulReport
   const articles = report.articles
 
