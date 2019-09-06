@@ -13,6 +13,8 @@ const Context = createContext<any>({
 const Provider = ({ children }: IProps) => {
   const [report, setReport] = useState<IReport | undefined>(undefined)
 
+  console.log(report)
+
   return (
     <Context.Provider
       value={{
