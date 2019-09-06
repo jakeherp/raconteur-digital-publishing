@@ -55,7 +55,7 @@ const Report = ({ data }: IReport) => {
       ))}
       <Footer
         sponsoredBy={report.sponsoredBy}
-        footerText={report.footerText.footerText}
+        footerText={report.footerText}
         contributors={report.contributors}
       />
     </Layout>

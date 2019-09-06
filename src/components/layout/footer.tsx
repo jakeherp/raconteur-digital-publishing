@@ -70,7 +70,7 @@ const Footer = ({ ...props }: IProps) => (
       <h3 className="sponsored-by">Publication sponsored by</h3>
       <img src={props.sponsoredBy.logo.file.url} />
     </div>
-    <Columns>{props.footerText}</Columns>
+    <Columns>{props.footerText.footerText}</Columns>
     <Wrapper>
       <Column>
         <Logo />
