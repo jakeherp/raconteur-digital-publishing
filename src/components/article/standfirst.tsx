@@ -5,6 +5,10 @@ const Standfirst = styled.p`
   font-size: 1.8rem;
   line-height: 1.25;
   margin-bottom: 5rem;
+
+  @media print {
+    margin-bottom: 2rem;
+  }
 `
 
 interface IProps {

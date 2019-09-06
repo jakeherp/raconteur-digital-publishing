@@ -6,6 +6,11 @@ const Anim = styled.div`
   opacity: 0;
   transform: translateY(100px);
 
+  @media print {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   &.in {
     opacity: 1;
     transform: translateY(0);
