@@ -21,7 +21,7 @@ const HomeScreen = styled.section`
     color: #fff;
     text-align: center;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
     font-size: 35px;
     @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
       font-size: 55px;
@@ -76,10 +76,10 @@ const Homescreen = ({ slug, image, color, sponsor, hypeId }: IProps) => {
       <Container>
         <Logo />
         <h1>Championing Mental Health in SMEs</h1>
+        {hypeId ? <Hype animationName={hypeId} /> : <Img fluid={image.fluid} />}
         <Link to={`/${slug}/#table-of-contents`}>
           <Scroll />
         </Link>
-        {hypeId ? <Hype animationName={hypeId} /> : <Img fluid={image.fluid} />}
         <Sponsor src={sponsor} />
       </Container>
     </HomeScreen>
