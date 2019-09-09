@@ -12,8 +12,8 @@ import ScrollDown from "../../assets/scroll-down.svg"
 const HomeScreen = styled.section`
   position: relative;
   width: 100vw;
-  height: 100vh;
-  padding: 2rem;
+  min-height: 100vh;
+  padding: 2rem 2rem 4rem;
 
   h1 {
     width: 460px;
@@ -56,10 +56,8 @@ const Scroll = styled(ScrollDown)`
 `
 
 const Sponsor = styled.img`
-  position: absolute;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 2rem auto;
+  display: block;
 `
 
 interface IProps {
