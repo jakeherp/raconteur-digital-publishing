@@ -5,27 +5,35 @@ interface IProps {
   children: React.ReactNode
 }
 
-const Context = createContext<any>({
+const defaults = {
   report: undefined,
   loadReport: () => {},
-})
+}
 
-const Provider = ({ children }: IProps) => {
-  const [report, setReport] = useState<IReport | undefined>(undefined)
+const ReportContext = createContext<any>(defaults)
+
+export const Provider = ({ children }: IProps) => {
+  const [report, setReport] = useState<IReport | undefined>(defaults.report)
+
+  const loadReport = (currentReport: any) => {
+    try {
+      setReport(currentReport)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
-    <Context.Provider
+    <ReportContext.Provider
       value={{
+        ...defaults,
         report,
-        loadReport: (currentReport: IReport) => {
-          setReport(currentReport)
-        },
+        loadReport,
       }}
     >
       {children}
-    </Context.Provider>
+    </ReportContext.Provider>
   )
 }
 
-export default Context
-export { Provider }
+export default ReportContext

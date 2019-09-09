@@ -2,11 +2,12 @@ import React from "react"
 import { ThemeProvider } from "styled-components"
 import "./layout.css"
 
-import { Provider } from "../../context/report.context"
-
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
-  require("smooth-scroll")('a[href*="#"]')
+  require("smooth-scroll")('a[href*="#"]', {
+    speed: 500,
+    speedAsDuration: true,
+  })
 }
 
 interface IProps {
@@ -40,13 +41,11 @@ const theme = {
 
 const Layout = ({ children }: IProps) => {
   return (
-    <Provider>
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <main>{children}</main>
-        </React.Fragment>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <main>{children}</main>
+      </React.Fragment>
+    </ThemeProvider>
   )
 }
 
