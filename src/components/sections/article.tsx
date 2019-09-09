@@ -86,9 +86,9 @@ const Article = ({ ...props }: IProps) => {
       [BLOCKS.QUOTE]: (_node: any, children: any) => (
         <Blockquote>{children}</Blockquote>
       ),
-      [BLOCKS.EMBEDDED_ENTRY]: (_node: any, { hypeId }: any) => (
-        <Hype animationName={hypeId} />
-      ),
+      // [BLOCKS.EMBEDDED_ENTRY]: (_node: any, { hypeId }: any) => (
+      //   <Hype animationName={hypeId} />
+      // ),
     },
   }
 

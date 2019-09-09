@@ -9,6 +9,11 @@ export default interface IReport {
       title: string
       slug: string
       color: string
+      headerColor: string
+      hypeAnimation: {
+        hypeId: string
+        format: string
+      }
       featuredImage: {
         fluid: any
       }

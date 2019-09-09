@@ -17,11 +17,11 @@ const Hype = ({ animationName }: IProps) => {
   if (window !== undefined) {
     const script = document.createElement("script")
 
-    script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/${animationName}.hyperesources/${animationName}_hype_generated_script.js`
+    script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/rac.hyperesources/rac_hype_generated_script.js`
     script.async = true
 
     const container: HTMLElement | null = document.getElementById(
-      `${animationName}_hype_container`
+      `rac_hype_container`
     )
 
     useEffect(() => {
@@ -33,9 +33,9 @@ const Hype = ({ animationName }: IProps) => {
 
   return (
     <div
-      id={`${animationName}_hype_container`}
+      id={`rac_hype_container`}
       className="HYPE_document"
-      style={{ position: `relative` }}
+      style={{ position: `relative`, paddingBottom: `56%` }}
     />
   )
 }

@@ -25,7 +25,13 @@ const Report = ({ data }: IReport) => {
   return (
     <Layout>
       <SEO title={report.title} />
-      <Homescreen slug={report.slug} image={report.featuredImage} />
+      <Homescreen
+        slug={report.slug}
+        image={report.featuredImage}
+        color={report.headerColor}
+        sponsor={report.sponsoredBy.logo.file.url}
+        hypeId={report.hypeAnimation.hypeId}
+      />
       <TableOfContents
         articles={articles}
         reportSlug={report.slug}
@@ -66,6 +72,11 @@ export const reportQuery = graphql`
       title
       slug
       color
+      hypeAnimation {
+        hypeId
+        format
+      }
+      headerColor
       featuredImage {
         fluid(maxWidth: 1920, maxHeight: 1080, quality: 100) {
           ...GatsbyContentfulFluid_tracedSVG
@@ -114,12 +125,6 @@ export const reportQuery = graphql`
           bio
         }
       }
-      publisher
-      projectManager
-      editor
-      designers
-      headOfProduction
-      digitalMarketingManager
     }
   }
 `
