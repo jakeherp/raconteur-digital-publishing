@@ -79,7 +79,7 @@ export const reportQuery = graphql`
       headerColor
       featuredImage {
         fluid(maxWidth: 1920, maxHeight: 1080, quality: 100) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       sponsoredBy {
@@ -99,7 +99,7 @@ export const reportQuery = graphql`
         }
         featuredImage {
           fluid(maxHeight: 600, maxWidth: 1920, quality: 100) {
-            ...GatsbyContentfulFluid_tracedSVG
+            ...GatsbyContentfulFluid
           }
         }
         author {
