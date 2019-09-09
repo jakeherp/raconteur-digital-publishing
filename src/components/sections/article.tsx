@@ -93,7 +93,6 @@ const Article = ({ ...props }: IProps) => {
   }
 
   const { report } = useContext(ReportContext)
-  console.log(report)
 
   return (
     <Section id={props.slug}>

@@ -16,22 +16,22 @@ interface IProps {
 const Hype = ({ animationName }: IProps) => {
   const isBrowser = typeof window !== undefined
 
-  if (isBrowser) {
-    const script = document.createElement("script")
-
-    script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/rac.hyperesources/rac_hype_generated_script.js`
-    script.async = true
-
+  useEffect(() => {
     const container: HTMLElement | null = document.getElementById(
       `rac_hype_container`
     )
 
-    useEffect(() => {
+    if (isBrowser) {
+      const script = document.createElement("script")
+
+      script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/rac.hyperesources/rac_hype_generated_script.js`
+      script.async = true
+
       if (container !== null) {
         container.appendChild(script)
       }
-    }, [container])
-  }
+    }
+  }, [])
 
   return (
     <div
