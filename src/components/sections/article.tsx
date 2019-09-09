@@ -12,7 +12,7 @@ import Content from "../article/content"
 import BoxOut from "../article/boxout"
 import Blockquote from "../article/quote"
 import Animate from "../ui/animate-in"
-import Hype from "../ui/hype"
+// import Hype from "../ui/hype"
 
 import Lines from "../../assets/lines.svg"
 

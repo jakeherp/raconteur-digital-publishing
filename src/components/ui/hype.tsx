@@ -14,7 +14,9 @@ interface IProps {
 }
 
 const Hype = ({ animationName }: IProps) => {
-  if (window !== undefined) {
+  const isBrowser = typeof window !== undefined
+
+  if (isBrowser) {
     const script = document.createElement("script")
 
     script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/rac.hyperesources/rac_hype_generated_script.js`
