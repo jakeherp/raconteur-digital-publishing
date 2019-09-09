@@ -33,6 +33,10 @@ const HomeScreen = styled.section`
   .gatsby-image-wrapper {
     width: 100%;
   }
+
+  .HYPE_document {
+    padding-bottom: 56.25%;
+  }
 `
 
 const Logo = styled(LogoSvg)`

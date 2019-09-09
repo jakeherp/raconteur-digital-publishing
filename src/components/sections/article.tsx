@@ -28,6 +28,7 @@ const Header = styled.header`
   padding-bottom: 56%;
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     height: 600px;
+    padding-bottom: 0;
   }
   .gatsby-image-wrapper {
     position: absolute !important;
