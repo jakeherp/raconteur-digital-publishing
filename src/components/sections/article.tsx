@@ -12,7 +12,8 @@ import Content from "../article/content"
 import BoxOut from "../article/boxout"
 import Blockquote from "../article/quote"
 import Animate from "../ui/animate-in"
-// import Hype from "../ui/hype"
+import Hype from "../ui/hype"
+import Chart from "../article/chart"
 
 import Lines from "../../assets/lines.svg"
 
@@ -89,9 +90,11 @@ const Article = ({ ...props }: IProps) => {
       [BLOCKS.QUOTE]: (_node: any, children: any) => (
         <Blockquote>{children}</Blockquote>
       ),
-      // [BLOCKS.EMBEDDED_ENTRY]: (_node: any, { hypeId }: any) => (
-      //   <Hype animationName={hypeId} />
-      // ),
+      [BLOCKS.EMBEDDED_ENTRY]: (_node: any) => (
+        <Chart format={_node.data.target.fields.format["en-GB"]}>
+          <Hype animationName={_node.data.target.fields.hypeId["en-GB"]} />
+        </Chart>
+      ),
     },
   }
 
