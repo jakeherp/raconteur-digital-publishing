@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import ReportContext from "../../context/report.context"
+// import ReportContext from "../../context/report.context"
 import Container from "../layout/container"
 import Sidebar from "../article/sidebar"
 import StandFirst from "../article/standfirst"
@@ -25,8 +25,10 @@ const Header = styled.header`
   overflow: hidden;
   display: block;
   width: 100%;
-  height: 600px;
-
+  padding-bottom: 56%;
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
+    height: 600px;
+  }
   .gatsby-image-wrapper {
     position: absolute !important;
     top: 0;
@@ -92,8 +94,7 @@ const Article = ({ ...props }: IProps) => {
     },
   }
 
-  const { report } = useContext(ReportContext)
-
+  // const { report } = useContext(ReportContext)
   return (
     <Section id={props.slug}>
       <Header>

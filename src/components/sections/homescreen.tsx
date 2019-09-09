@@ -12,7 +12,6 @@ import ScrollDown from "../../assets/scroll-down.svg"
 const HomeScreen = styled.section`
   position: relative;
   width: 100vw;
-  min-height: 100vh;
   padding: 2rem 2rem 4rem;
 
   h1 {
