@@ -1,11 +1,7 @@
+import IPost from "./post.interface"
 import IBoxOut from "./boxout.interface"
 
-export default interface IArticle {
-  title: string
-  slug: string
-  standFirst: {
-    standFirst: string
-  }
+export default interface IArticle extends IPost {
   featuredImage: {
     fluid: any
   }

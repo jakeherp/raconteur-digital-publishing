@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 const Aside = styled.aside`
   min-width: 250px;
+  max-width: 300px;
   border-left: 1px solid #000;
 
   h2 {

@@ -6,6 +6,8 @@ import Container from "../layout/container"
 import Animate from "../ui/animate-in"
 
 import Lines from "../../assets/lines.svg"
+import IArticle from "../../interface/article.interface"
+import IInfographic from "../../interface/infographic.interface"
 
 const Section = styled.section`
   padding: 4.75rem 0;
@@ -77,28 +79,7 @@ const Text = styled.div`
 interface IProps {
   color?: string
   reportSlug: string
-  articles: {
-    title: string
-    slug: string
-    standFirst: {
-      standFirst: string
-    }
-    featuredImage: {
-      fluid: any
-    }
-    author: {
-      name: string
-    }
-    content: {
-      json: any
-    }
-    boxOut: {
-      title: string
-      copy: {
-        json: any
-      }
-    } | null
-  }[]
+  articles: any
 }
 
 const TableOfContents = ({ articles, reportSlug }: IProps) => {
@@ -110,7 +91,7 @@ const TableOfContents = ({ articles, reportSlug }: IProps) => {
         </Animate>
         <Lines />
         <List>
-          {articles.map((article, index) => (
+          {articles.map((article: IArticle | IInfographic, index: number) => (
             <li key={index}>
               <Link to={`/${reportSlug}/#${article.slug}`}>
                 <Bullet>{index + 1}</Bullet>

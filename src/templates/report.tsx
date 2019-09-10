@@ -8,13 +8,17 @@ import SEO from "../components/seo"
 import Homescreen from "../components/sections/homescreen"
 import TableOfContents from "../components/sections/table-of-contents"
 import Article from "../components/sections/article"
+import Infographic from "../components/sections/infographic"
 
 import ReportContext from "../context/report.context"
 import IReport from "../interface/report.interface"
+import IArticle from "../interface/article.interface"
+import IInfographic from "../interface/infographic.interface"
+// import IInfographic from "../interface/infographic.interface"
 
 const Report = ({ data }: IReport) => {
   const report = data.contentfulReport
-  const articles = report.articles
+  const articles: IArticle[] | IInfographic[] = report.articles
 
   const { loadReport } = useContext(ReportContext)
 
@@ -37,24 +41,45 @@ const Report = ({ data }: IReport) => {
         reportSlug={report.slug}
         color={report.color}
       />
-      {articles.map(article => (
-        <Article
-          key={article.slug}
-          title={article.title}
-          slug={article.slug}
-          reportSlug={report.slug}
-          standfirst={article.standFirst.standFirst}
-          featuredImage={article.featuredImage}
-          author={article.author.name}
-          content={article.content}
-          allArticles={articles}
-          boxOut={
-            article.boxOut
-              ? { title: article.boxOut.title, content: article.boxOut.copy }
-              : null
-          }
-        />
-      ))}
+      {articles.map((article: any) => {
+        if (article.__typename === "ContentfulArticle") {
+          return (
+            <Article
+              key={article.slug}
+              title={article.title}
+              slug={article.slug}
+              reportSlug={report.slug}
+              standfirst={article.standFirst.standFirst}
+              featuredImage={article.featuredImage}
+              author={article.author.name}
+              content={article.content}
+              allArticles={articles}
+              boxOut={
+                article.boxOut
+                  ? {
+                      title: article.boxOut.title,
+                      content: article.boxOut.copy,
+                    }
+                  : null
+              }
+            />
+          )
+        } else if (article.__typename === "ContentfulInfographic") {
+          return (
+            <Infographic
+              key={article.slug}
+              title={article.title}
+              slug={article.slug}
+              reportSlug={report.slug}
+              reportTitle={report.title}
+              standfirst={article.standFirst.standFirst}
+              content={article.body}
+              header={article.header.hypeId}
+              allArticles={articles}
+            />
+          )
+        }
+      })}
       <Footer
         sponsoredBy={report.sponsoredBy}
         footerText={report.footerText}
@@ -92,27 +117,44 @@ export const reportQuery = graphql`
         link
       }
       articles {
-        title
-        slug
-        standFirst {
-          standFirst
-        }
-        featuredImage {
-          fluid(maxHeight: 600, maxWidth: 1920, quality: 100) {
-            ...GatsbyContentfulFluid
+        ... on Node {
+          __typename
+          ... on ContentfulArticle {
+            title
+            slug
+            standFirst {
+              standFirst
+            }
+            featuredImage {
+              fluid(maxHeight: 600, maxWidth: 1920, quality: 100) {
+                ...GatsbyContentfulFluid
+              }
+            }
+            author {
+              name
+            }
+            content {
+              json
+            }
+            boxOut {
+              title
+              copy {
+                json
+              }
+            }
           }
-        }
-        author {
-          name
-        }
-        content {
-          json
-        }
-
-        boxOut {
-          title
-          copy {
-            json
+          ... on ContentfulInfographic {
+            title
+            slug
+            standFirst {
+              standFirst
+            }
+            header {
+              hypeId
+            }
+            body {
+              json
+            }
           }
         }
       }
