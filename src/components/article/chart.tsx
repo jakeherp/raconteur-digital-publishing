@@ -19,7 +19,7 @@ const Chart = styled.div`
     margin-left: -4rem;
     width: 50%;
     &.full {
-      width: 110%;
+      width: calc(100% + 4rem);
     }
   }
 `
