@@ -48,10 +48,15 @@ const Headline = styled.div`
   h1 {
     font-size: 60px;
     line-height: 1.1;
-    color: #fff;
-    display: inline;
-    background: ${props => props.theme.colors.primary};
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0;
+    span {
+      background: ${props => props.theme.colors.primary};
+      color: #fff;
+      display: inline;
+      padding: 0.5rem;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
   }
 `
 
@@ -107,7 +112,9 @@ const Article = ({ ...props }: IProps) => {
       <Container>
         <Animate>
           <Headline>
-            <h1>{props.title}</h1>
+            <h1>
+              <span>{props.title}</span>
+            </h1>
           </Headline>
         </Animate>
         <Animate>
