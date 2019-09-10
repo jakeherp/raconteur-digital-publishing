@@ -14,7 +14,6 @@ import ReportContext from "../context/report.context"
 import IReport from "../interface/report.interface"
 import IArticle from "../interface/article.interface"
 import IInfographic from "../interface/infographic.interface"
-// import IInfographic from "../interface/infographic.interface"
 
 const Report = ({ data }: IReport) => {
   const report = data.contentfulReport
@@ -41,6 +40,7 @@ const Report = ({ data }: IReport) => {
         reportSlug={report.slug}
         color={report.color}
       />
+      // @ts-ignore
       {articles.map((article: any) => {
         if (article.__typename === "ContentfulArticle") {
           return (
