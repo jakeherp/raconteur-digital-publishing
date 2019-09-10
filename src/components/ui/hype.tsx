@@ -24,7 +24,7 @@ const Hype = ({ animationName }: IProps) => {
     if (isBrowser) {
       const script = document.createElement("script")
 
-      script.src = `https://raconteur.london/upload/uploads/hype/${animationName}/${animationName}.hyperesources/${animationName}_hype_generated_script.js`
+      script.src = `https://raconteur.london/upload/uploads/hype/ls/${animationName}/${animationName}.hyperesources/${animationName}_hype_generated_script.js`
       script.async = true
 
       if (container !== null) {

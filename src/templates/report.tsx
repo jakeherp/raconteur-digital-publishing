@@ -40,8 +40,9 @@ const Report = ({ data }: IReport) => {
         reportSlug={report.slug}
         color={report.color}
       />
+      {/*  */
       // @ts-ignore
-      {articles.map((article: any) => {
+      articles.map((article: any) => {
         if (article.__typename === "ContentfulArticle") {
           return (
             <Article
