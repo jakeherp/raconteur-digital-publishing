@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
@@ -8,6 +8,7 @@ import Hype from "../ui/hype"
 
 import LogoSvg from "../../assets/logo.svg"
 import ScrollDown from "../../assets/scroll-down.svg"
+import ReportContext from "../../context/report.context"
 
 const HomeScreen = styled.section`
   position: relative;
@@ -66,32 +67,25 @@ const Sponsor = styled.img`
   display: block;
 `
 
-interface IProps {
-  slug: string
-  title: string
-  color: string
-  image: any
-  sponsor: string
-  hypeId?: string
-}
+const Homescreen = () => {
+  const { report } = useContext(ReportContext)
 
-const Homescreen = ({ slug, title, image, color, sponsor, hypeId }: IProps) => {
   return (
-    <HomeScreen style={{ backgroundColor: color }}>
+    <HomeScreen style={{ backgroundColor: report.headerColor }}>
       <Container>
         <Logo />
-        <h1>{title}</h1>
+        <h1>{report.title}</h1>
         <Wrap>
-          {hypeId ? (
-            <Hype animationName={hypeId} />
+          {report.hypeAnimation.hypeId ? (
+            <Hype animationName={report.hypeAnimation.hypeId} />
           ) : (
-            <Img fluid={image.fluid} />
+            <Img fluid={report.featuredImage.fluid} />
           )}
         </Wrap>
-        <Link to={`/${slug}/#table-of-contents`}>
+        <Link to={`/${report.slug}/#table-of-contents`}>
           <Scroll />
         </Link>
-        <Sponsor src={sponsor} />
+        <Sponsor src={report.sponsoredBy.logo.file.url} />
       </Container>
     </HomeScreen>
   )

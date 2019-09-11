@@ -28,19 +28,8 @@ const Report = ({ data }: IReport) => {
   return (
     <Layout>
       <SEO title={report.title} />
-      <Homescreen
-        title={report.title}
-        slug={report.slug}
-        image={report.featuredImage}
-        color={report.headerColor}
-        sponsor={report.sponsoredBy.logo.file.url}
-        hypeId={report.hypeAnimation.hypeId}
-      />
-      <TableOfContents
-        articles={articles}
-        reportSlug={report.slug}
-        color={report.color}
-      />
+      <Homescreen />
+      <TableOfContents />
       {/*  */
       // @ts-ignore
       articles.map((article: any) => {

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -8,6 +8,7 @@ import Animate from "../ui/animate-in"
 import Lines from "../../assets/lines.svg"
 import IArticle from "../../interface/article.interface"
 import IInfographic from "../../interface/infographic.interface"
+import ReportContext from "../../context/report.context"
 
 const Section = styled.section`
   padding: 4.75rem 0;
@@ -76,13 +77,9 @@ const Text = styled.div`
   }
 `
 
-interface IProps {
-  color?: string
-  reportSlug: string
-  articles: any
-}
+const TableOfContents = () => {
+  const { report } = useContext(ReportContext)
 
-const TableOfContents = ({ articles, reportSlug }: IProps) => {
   return (
     <Section id="table-of-contents">
       <Container>
@@ -91,17 +88,19 @@ const TableOfContents = ({ articles, reportSlug }: IProps) => {
         </Animate>
         <Lines />
         <List>
-          {articles.map((article: IArticle | IInfographic, index: number) => (
-            <li key={index}>
-              <Link to={`/${reportSlug}/#${article.slug}`}>
-                <Bullet>{index + 1}</Bullet>
-                <Text>
-                  <h3>{article.title}</h3>
-                  <p>{article.standFirst.standFirst}</p>
-                </Text>
-              </Link>
-            </li>
-          ))}
+          {report.articles.map(
+            (article: IArticle | IInfographic, index: number) => (
+              <li key={index}>
+                <Link to={`/${report.slug}/#${article.slug}`}>
+                  <Bullet>{index + 1}</Bullet>
+                  <Text>
+                    <h3>{article.title}</h3>
+                    <p>{article.standFirst.standFirst}</p>
+                  </Text>
+                </Link>
+              </li>
+            )
+          )}
         </List>
       </Container>
     </Section>

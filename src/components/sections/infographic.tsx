@@ -105,12 +105,7 @@ const Infographic = ({ ...props }: IProps) => {
           <Infographics>
             {documentToReactComponents(props.content.json, options)}
           </Infographics>
-          <Sidebar
-            reportTitle={props.reportTitle}
-            reportSlug={props.reportSlug}
-            currentArticle={props.slug}
-            articleList={props.allArticles}
-          />
+          <Sidebar currentArticle={props.slug} />
         </Content>
       </Container>
     </Section>

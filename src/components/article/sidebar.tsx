@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import ReportContext from "../../context/report.context"
 
 const Aside = styled.aside`
   min-width: 250px;
@@ -47,42 +48,41 @@ const Sticky = styled.div`
 `
 
 interface IProps {
-  reportTitle: string
-  reportSlug: string
   currentArticle: string
-  articleList: {
-    title: string
-    slug: string
-  }[]
 }
 
-const Sidebar = ({
-  reportTitle,
-  articleList,
-  reportSlug,
-  currentArticle,
-}: IProps) => {
+const Sidebar = ({ currentArticle }: IProps) => {
+  const { report } = useContext(ReportContext)
+
+  console.log(report)
+
   return (
     <Aside>
       <Sticky>
-        <h2>{reportTitle}</h2>
-        <nav>
-          <ul>
-            {articleList.map((article, index) => (
-              <li
-                key={index}
-                className={
-                  currentArticle === article.slug ? "active" : undefined
-                }
-              >
-                <Link to={`/${reportSlug}/#${article.slug}`}>
-                  <span>{index + 1}</span>
-                  <span>{article.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {report ? (
+          <React.Fragment>
+            <h2>{report.title}</h2>
+            <nav>
+              <ul>
+                {report.articles.map((article: any, index: number) => (
+                  <li
+                    key={index}
+                    className={
+                      currentArticle === article.slug ? "active" : undefined
+                    }
+                  >
+                    <Link to={`/${report.slug}/#${article.slug}`}>
+                      <span>{index + 1}</span>
+                      <span>{article.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </React.Fragment>
+        ) : (
+          "Loading"
+        )}
       </Sticky>
     </Aside>
   )

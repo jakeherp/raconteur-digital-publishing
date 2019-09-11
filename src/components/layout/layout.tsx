@@ -3,6 +3,8 @@ import { ThemeProvider } from "styled-components"
 import ReportContext from "../../context/report.context"
 
 import "./layout.css"
+import Loader from "../ui/loader"
+import AnimateIn from "../ui/animate-in"
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
@@ -47,7 +49,13 @@ const Layout = ({ children }: IProps) => {
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
-        <main>{children}</main>
+        {report ? (
+          <AnimateIn>
+            <main>{children}</main>
+          </AnimateIn>
+        ) : (
+          <Loader />
+        )}
       </React.Fragment>
     </ThemeProvider>
   )

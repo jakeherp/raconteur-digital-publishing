@@ -1,12 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 
 import Logo from "../../assets/logo.svg"
 import Lines from "../../assets/lines.svg"
 
-import ISponsored from "../../interface/sponsored.interface"
-import IFooter from "../../interface/footer.interface"
-import IContributor from "../../interface/contributor.interface"
+import ReportContext from "../../context/report.context"
 
 const Foot = styled.footer`
   font-family: ${props => props.theme.fonts.apercu};
@@ -57,31 +55,31 @@ const Column = styled.div`
   }
 `
 
-interface IProps {
-  sponsoredBy: ISponsored
-  footerText: IFooter
-  contributors: IContributor[]
-}
+const Footer = () => {
+  const { report } = useContext(ReportContext)
 
-const Footer = ({ ...props }: IProps) => (
-  <Foot>
-    <Border />
-    <div>
-      <h3 className="sponsored-by">Publication sponsored by</h3>
-      <img src={props.sponsoredBy.logo.file.url} />
-    </div>
-    <Columns>{props.footerText.footerText}</Columns>
-    <Wrapper>
-      <Column>
-        <Logo />
-      </Column>
-      <Column>
-        <strong>Contributors: </strong>
-        {props.contributors.map(contributor => contributor.name).join(", ")}
-      </Column>
-    </Wrapper>
-    <Border />
-  </Foot>
-)
+  return (
+    <Foot>
+      <Border />
+      <div>
+        <h3 className="sponsored-by">Publication sponsored by</h3>
+        <img src={report.sponsoredBy.logo.file.url} />
+      </div>
+      <Columns>{report.footerText.footerText}</Columns>
+      <Wrapper>
+        <Column>
+          <Logo />
+        </Column>
+        <Column>
+          <strong>Contributors: </strong>
+          {report.contributors
+            .map((contributor: any) => contributor.name)
+            .join(", ")}
+        </Column>
+      </Wrapper>
+      <Border />
+    </Foot>
+  )
+}
 
 export default Footer
