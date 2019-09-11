@@ -17,9 +17,7 @@ import Chart from "../article/chart"
 
 import Lines from "../../assets/lines.svg"
 
-const Section = styled.article`
-  margin-bottom: 5rem;
-`
+import IArticle from "../../interface/article.interface"
 
 const Header = styled.header`
   position: relative;
@@ -41,54 +39,66 @@ const Header = styled.header`
   }
 `
 
-const Headline = styled.div`
-  margin: -3rem 0 2rem;
-  max-width: 600px;
-
-  h1 {
-    font-size: 60px;
-    line-height: 1.1;
-    padding: 0.25rem 0;
-    span {
-      background: ${props => props.theme.colors.primary};
-      color: #fff;
-      display: inline;
-      padding: 0.5rem;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-  }
-`
-
 const Author = styled.strong`
   font-family: ${props => props.theme.fonts.apercu};
 `
 
-interface IProps {
-  title: string
-  slug: string
+interface IProps extends IArticle {
   reportSlug: string
-  standfirst: string
-  featuredImage: {
-    fluid: any
-  }
-  author: string
-  content: {
-    json: any
-  }
   allArticles: {
     title: string
     slug: string
   }[]
-  boxOut: {
-    title: string
-    content: {
-      json: any
-    }
-  } | null
 }
 
 const Article = ({ ...props }: IProps) => {
+  const advertorial = props.isAdvertorial
+    ? {
+        fontFamily: `"Apercu", sans-serif`,
+        marginTop: `-5rem`,
+      }
+    : {
+        fontFamily: `"Tiempos", serif`,
+        marginTop: `-3rem`,
+      }
+
+  const Section = styled.article`
+    margin-bottom: 5rem;
+    font-family: ${advertorial.fontFamily};
+
+    h1 {
+      font-family: ${advertorial.fontFamily};
+    }
+  `
+
+  const Headline = styled.div`
+    margin: ${advertorial.marginTop} 0 2rem;
+    max-width: 600px;
+
+    h1 {
+      font-size: 60px;
+      line-height: 1.2;
+      padding: 0.25rem 0;
+      span {
+        background: ${props => props.theme.colors.primary};
+        color: #fff;
+        display: inline;
+        padding: 0.5rem;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+    }
+  `
+
+  const Feature = styled.span`
+    background: #fff;
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+    display: inline-block;
+    color: #000;
+    font-size: 20px;
+  `
+
   const options: any = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (_node: any, children: any) => <p>{children}</p>,
@@ -112,22 +122,23 @@ const Article = ({ ...props }: IProps) => {
       <Container>
         <Animate>
           <Headline>
+            {props.isAdvertorial && <Feature>Commercial Feature</Feature>}
             <h1>
               <span>{props.title}</span>
             </h1>
           </Headline>
         </Animate>
         <Animate>
-          <StandFirst>{props.standfirst}</StandFirst>
+          <StandFirst>{props.standFirst.standFirst}</StandFirst>
         </Animate>
         <Content>
           <div>
             <Author>{props.author}</Author>
             <Lines />
-            {documentToReactComponents(props.content.json, options)}
+            {documentToReactComponents(props.copy.json, options)}
             {props.boxOut !== null && (
               <BoxOut title={props.boxOut.title}>
-                {documentToReactComponents(props.boxOut.content.json, options)}
+                {documentToReactComponents(props.boxOut.copy.json, options)}
               </BoxOut>
             )}
           </div>

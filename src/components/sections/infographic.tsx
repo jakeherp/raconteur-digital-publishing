@@ -29,7 +29,7 @@ const Headline = styled.div`
 
   h1 {
     font-size: 60px;
-    line-height: 1.1;
+    line-height: 1.2;
     padding: 0.25rem 0;
     span {
       background: ${props => props.theme.colors.primary};

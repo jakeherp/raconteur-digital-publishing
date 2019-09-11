@@ -1,5 +1,5 @@
 export default interface IPost {
-  __typename: string
+  __typename?: string
   title: string
   slug: string
   standFirst: {

@@ -50,19 +50,20 @@ const Report = ({ data }: IReport) => {
               title={article.title}
               slug={article.slug}
               reportSlug={report.slug}
-              standfirst={article.standFirst.standFirst}
+              standFirst={article.standFirst}
               featuredImage={article.featuredImage}
               author={article.author.name}
-              content={article.content}
+              copy={article.content}
               allArticles={articles}
               boxOut={
                 article.boxOut
                   ? {
                       title: article.boxOut.title,
-                      content: article.boxOut.copy,
+                      copy: article.boxOut.copy,
                     }
                   : null
               }
+              isAdvertorial={article.isAdvertorial}
             />
           )
         } else if (article.__typename === "ContentfulInfographic") {
@@ -143,6 +144,7 @@ export const reportQuery = graphql`
                 json
               }
             }
+            isAdvertorial
           }
           ... on ContentfulInfographic {
             title

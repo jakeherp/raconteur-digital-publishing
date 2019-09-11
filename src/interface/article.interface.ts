@@ -8,8 +8,9 @@ export default interface IArticle extends IPost {
   author: {
     name: string
   }
-  content: {
+  copy: {
     json: any
   }
-  boxOut: IBoxOut
+  boxOut: IBoxOut | null
+  isAdvertorial: boolean
 }
