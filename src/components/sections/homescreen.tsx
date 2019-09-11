@@ -25,9 +25,6 @@ const HomeScreen = styled.section`
     @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
       font-size: 55px;
     }
-    @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-      font-size: 65px;
-    }
   }
 
   .gatsby-image-wrapper {
@@ -45,6 +42,12 @@ const Logo = styled(LogoSvg)`
   fill: #fff;
   display: block;
   margin: 1rem auto;
+`
+
+const Wrap = styled.div`
+  width: 75vh;
+  max-width: 100%;
+  margin: 0 auto;
 `
 
 const Scroll = styled(ScrollDown)`
@@ -65,19 +68,26 @@ const Sponsor = styled.img`
 
 interface IProps {
   slug: string
+  title: string
   color: string
   image: any
   sponsor: string
-  hypeId: string
+  hypeId?: string
 }
 
-const Homescreen = ({ slug, image, color, sponsor, hypeId }: IProps) => {
+const Homescreen = ({ slug, title, image, color, sponsor, hypeId }: IProps) => {
   return (
     <HomeScreen style={{ backgroundColor: color }}>
       <Container>
         <Logo />
-        <h1>Championing Mental Health in SMEs</h1>
-        {hypeId ? <Hype animationName={hypeId} /> : <Img fluid={image.fluid} />}
+        <h1>{title}</h1>
+        <Wrap>
+          {hypeId ? (
+            <Hype animationName={hypeId} />
+          ) : (
+            <Img fluid={image.fluid} />
+          )}
+        </Wrap>
         <Link to={`/${slug}/#table-of-contents`}>
           <Scroll />
         </Link>

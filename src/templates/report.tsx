@@ -29,6 +29,7 @@ const Report = ({ data }: IReport) => {
     <Layout>
       <SEO title={report.title} />
       <Homescreen
+        title={report.title}
         slug={report.slug}
         image={report.featuredImage}
         color={report.headerColor}
