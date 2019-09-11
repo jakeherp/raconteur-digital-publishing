@@ -13,7 +13,7 @@ import ReportContext from "../../context/report.context"
 const HomeScreen = styled.section`
   position: relative;
   width: 100vw;
-  padding: 2rem 2rem 4rem;
+  padding: 2rem 0 4rem;
 
   h1 {
     width: 460px;
