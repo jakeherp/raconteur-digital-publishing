@@ -54,8 +54,6 @@ interface IProps {
 const Sidebar = ({ currentArticle }: IProps) => {
   const { report } = useContext(ReportContext)
 
-  console.log(report)
-
   return (
     <Aside>
       <Sticky>
