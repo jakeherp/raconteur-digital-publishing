@@ -28,7 +28,7 @@ const Headline = styled.div`
   max-width: 600px;
 
   h1 {
-    font-size: 60px;
+    font-size: 35px;
     line-height: 1.2;
     padding: 0.25rem 0;
     span {
@@ -39,6 +39,9 @@ const Headline = styled.div`
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
     }
+    @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+      font-size: 60px;
+    }
   }
 `
 
@@ -48,7 +51,9 @@ const Chart = styled.div`
 
 const Infographics = styled.div`
   flex-grow: 1;
-  padding: 0 1rem;
+  @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+    padding: 0 1rem;
+  }
 `
 
 interface IProps {

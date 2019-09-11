@@ -23,22 +23,27 @@ const List = styled.ol`
   list-style: none;
   padding: 0;
   margin: 2rem 0 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   li {
     max-width: 100%;
     padding-bottom: 1rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid #000;
+    min-width: 300px;
     a {
       display: flex;
       flex-direction: row;
     }
     @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+      width: calc(50% - 1rem);
       &:nth-of-type(2n + 1) {
         margin-right: 1rem;
+      }
+      &:nth-of-type(2n + 2) {
+        margin-left: 1rem;
       }
     }
   }

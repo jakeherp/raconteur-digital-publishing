@@ -73,11 +73,7 @@ const Report = ({ data }: IReport) => {
           )
         }
       })}
-      <Footer
-        sponsoredBy={report.sponsoredBy}
-        footerText={report.footerText}
-        contributors={report.contributors}
-      />
+      <Footer />
     </Layout>
   )
 }
