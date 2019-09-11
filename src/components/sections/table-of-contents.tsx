@@ -28,11 +28,10 @@ const List = styled.ol`
   flex-wrap: wrap;
 
   li {
-    max-width: 100%;
+    width: 100%;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid #000;
-    min-width: 300px;
     a {
       display: flex;
       flex-direction: row;
@@ -50,22 +49,25 @@ const List = styled.ol`
 `
 
 const Bullet = styled.span`
-  display: inline-block;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 1rem;
-  min-width: 3rem;
-  width: 3rem;
-  height: 3rem;
-  background: ${props => props.theme.colors.primary};
-  border-radius: 9999px;
-  color: #fff;
-  font-family: ${props => props.theme.fonts.apercu};
-  font-size: 1.5rem;
-  font-weight: bold;
-  line-height: 1;
-  text-align: center;
+  display: none;
+  @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1rem;
+    min-width: 3rem;
+    width: 3rem;
+    height: 3rem;
+    background: ${props => props.theme.colors.primary};
+    border-radius: 9999px;
+    color: #fff;
+    font-family: ${props => props.theme.fonts.apercu};
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+  }
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     min-width: 88px;
     width: 88px;
