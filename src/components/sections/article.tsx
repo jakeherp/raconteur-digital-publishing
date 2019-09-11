@@ -45,6 +45,7 @@ const Author = styled.strong`
 
 interface IProps extends IArticle {
   reportSlug: string
+  reportTitle: string
   allArticles: {
     title: string
     slug: string
@@ -143,7 +144,7 @@ const Article = ({ ...props }: IProps) => {
             )}
           </div>
           <Sidebar
-            reportTitle="Championing Mental Health in SMEs"
+            reportTitle={props.reportTitle}
             reportSlug={props.reportSlug}
             currentArticle={props.slug}
             articleList={props.allArticles}

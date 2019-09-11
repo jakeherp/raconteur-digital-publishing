@@ -51,6 +51,7 @@ const Report = ({ data }: IReport) => {
               title={article.title}
               slug={article.slug}
               reportSlug={report.slug}
+              reportTitle={report.title}
               standFirst={article.standFirst}
               featuredImage={article.featuredImage}
               author={article.author.name}
