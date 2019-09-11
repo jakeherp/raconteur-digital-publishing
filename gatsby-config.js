@@ -50,6 +50,7 @@ module.exports = {
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-contentful`,
