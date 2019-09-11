@@ -807,8 +807,17 @@ pre tt:after {
 }
 
 @media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+  }
   section,
   article {
     page-break-after: always;
+  }
+
+  img {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
   }
 }
