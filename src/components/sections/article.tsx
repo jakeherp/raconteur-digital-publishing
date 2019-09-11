@@ -77,7 +77,7 @@ const Article = ({ ...props }: IProps) => {
     max-width: 600px;
 
     h1 {
-      font-size: 60px;
+      font-size: 35px;
       line-height: 1.2;
       padding: 0.25rem 0;
       span {
@@ -87,6 +87,10 @@ const Article = ({ ...props }: IProps) => {
         padding: 0.5rem;
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
+      }
+      @media screen and (min-width: ${props =>
+          props.theme.breakpoints.tablet}) {
+        font-size: 60px;
       }
     }
   `
