@@ -97,6 +97,22 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Apercu Pro";
+  font-display: swap;
+  src: url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu.eot");
+  src: url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu.woff2")
+      format("woff2"),
+    url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu.woff")
+      format("woff"),
+    url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Apercu Specials */
 
 @font-face {
@@ -133,22 +149,6 @@
 
 @font-face {
   font-family: "Apercu";
-  font-display: swap;
-  src: url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.eot");
-  src: url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.woff2")
-      format("woff2"),
-    url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.woff")
-      format("woff"),
-    url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.ttf")
-      format("truetype");
-  font-weight: light;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Apercu Pro";
   font-display: swap;
   src: url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.eot");
   src: url("https://res.cloudinary.com/cpub/raw/upload/v1486565126/fonts/subset-Apercu-Light.eot?#iefix")
