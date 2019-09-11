@@ -34,7 +34,13 @@ const List = styled.ol`
     border-bottom: 1px solid #000;
     a {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      text-align: center;
+      @media screen and (min-width: ${props =>
+          props.theme.breakpoints.tablet}) {
+        flex-direction: row;
+        text-align: left;
+      }
     }
     @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
       width: calc(50% - 1rem);
@@ -49,7 +55,22 @@ const List = styled.ol`
 `
 
 const Bullet = styled.span`
-  display: none;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem auto;
+  min-width: 3rem;
+  width: 3rem;
+  height: 3rem;
+  background: ${props => props.theme.colors.primary};
+  border-radius: 9999px;
+  color: #fff;
+  font-family: ${props => props.theme.fonts.apercu};
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
   @media screen and (min-width: ${props => props.theme.breakpoints.tablet}) {
     display: inline-block;
     display: flex;
