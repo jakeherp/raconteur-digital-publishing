@@ -15,7 +15,7 @@ interface IProps {
   lang: string
   meta: any
   title: string
-  image: string
+  image?: string
 }
 
 function SEO({ description, lang, meta, title, image }: IProps) {
