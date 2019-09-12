@@ -1,7 +1,7 @@
 {
-  "name": "raconteur-reports",
+  "name": "raconteur-insights",
   "private": true,
-  "description": "Digital Reports platform for Raconteur",
+  "description": "Raconteur Insights are digital Reports that appear independent of our print publications.",
   "version": "1.0.0",
   "author": "Jacob Herper <jacob@herper.io>",
   "dependencies": {

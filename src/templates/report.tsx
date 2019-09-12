@@ -27,7 +27,7 @@ const Report = ({ data }: IReport) => {
 
   return (
     <Layout>
-      <SEO title={report.title} />
+      <SEO title={report.title} description={report.metaDescription} />
       <Homescreen />
       <TableOfContents />
       {/*  */
@@ -85,6 +85,7 @@ export const reportQuery = graphql`
     contentfulReport(slug: { eq: $slug }) {
       title
       slug
+      metaDescription
       color
       hypeAnimation {
         hypeId

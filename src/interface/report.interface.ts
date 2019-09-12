@@ -8,6 +8,7 @@ export default interface IReport {
   data: {
     contentfulReport: {
       title: string
+      metaDescription: string
       slug: string
       color: string
       headerColor: string

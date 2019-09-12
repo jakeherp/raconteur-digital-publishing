@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Raconteur Reports`,
-    description: `Report platform for Raconteur`,
-    siteUrl: `https://raconteur-reports.netlify.com`,
+    title: `Raconteur Insights`,
+    description: `Raconteur Insights are digital Reports that appear independent of our print publications.`,
+    siteUrl: `https://insights.raconteur.net`,
     author: `Jacob Herper <jacob@herper.io>`,
   },
   plugins: [
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `raconteur-reports`,
-        short_name: `reports`,
+        name: `Raconteur Insights`,
+        short_name: `Insights`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ef3d4b`,
