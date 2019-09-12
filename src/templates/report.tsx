@@ -4,6 +4,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Footer from "../components/layout/footer"
 import SEO from "../components/seo"
+import AnimateIn from "../components/ui/animate-in"
+import Loader from "../components/ui/loader"
 
 import Homescreen from "../components/sections/homescreen"
 import TableOfContents from "../components/sections/table-of-contents"
@@ -16,64 +18,74 @@ import IArticle from "../interface/article.interface"
 import IInfographic from "../interface/infographic.interface"
 
 const Report = ({ data }: IReport) => {
-  const report = data.contentfulReport
-  const articles: IArticle[] | IInfographic[] = report.articles
+  const currentReport = data.contentfulReport
+  const articles: IArticle[] | IInfographic[] = currentReport.articles
 
-  const { loadReport } = useContext(ReportContext)
+  const { loadReport, report } = useContext(ReportContext)
 
   useEffect(() => {
-    loadReport(report)
-  }, [report])
+    loadReport(currentReport)
+  }, [currentReport])
 
   return (
     <Layout>
-      <SEO title={report.title} description={report.metaDescription} />
-      <Homescreen />
-      <TableOfContents />
-      {/*  */
-      // @ts-ignore
-      articles.map((article: any) => {
-        if (article.__typename === "ContentfulArticle") {
-          return (
-            <Article
-              key={article.slug}
-              title={article.title}
-              slug={article.slug}
-              reportSlug={report.slug}
-              reportTitle={report.title}
-              standFirst={article.standFirst}
-              featuredImage={article.featuredImage}
-              author={article.author.name}
-              copy={article.content}
-              allArticles={articles}
-              boxOut={
-                article.boxOut
-                  ? {
-                      title: article.boxOut.title,
-                      copy: article.boxOut.copy,
-                    }
-                  : null
-              }
-              isAdvertorial={article.isAdvertorial}
-            />
-          )
-        } else if (article.__typename === "ContentfulInfographic") {
-          return (
-            <Infographic
-              key={article.slug}
-              title={article.title}
-              slug={article.slug}
-              reportSlug={report.slug}
-              reportTitle={report.title}
-              standfirst={article.standFirst.standFirst}
-              content={article.body}
-              header={article.header.hypeId}
-              allArticles={articles}
-            />
-          )
-        }
-      })}
-      <Footer />
+      <SEO
+        title={currentReport.title}
+        description={currentReport.metaDescription}
+        image={currentReport.featuredImage.file.url}
+      />
+      {report ? (
+        <AnimateIn>
+          <Homescreen />
+          <TableOfContents />
+          {/*  */
+          // @ts-ignore
+          articles.map((article: any) => {
+            if (article.__typename === "ContentfulArticle") {
+              return (
+                <Article
+                  key={article.slug}
+                  title={article.title}
+                  slug={article.slug}
+                  reportSlug={currentReport.slug}
+                  reportTitle={currentReport.title}
+                  standFirst={article.standFirst}
+                  featuredImage={article.featuredImage}
+                  author={article.author.name}
+                  copy={article.content}
+                  allArticles={articles}
+                  boxOut={
+                    article.boxOut
+                      ? {
+                          title: article.boxOut.title,
+                          copy: article.boxOut.copy,
+                        }
+                      : null
+                  }
+                  isAdvertorial={article.isAdvertorial}
+                />
+              )
+            } else if (article.__typename === "ContentfulInfographic") {
+              return (
+                <Infographic
+                  key={article.slug}
+                  title={article.title}
+                  slug={article.slug}
+                  reportSlug={currentReport.slug}
+                  reportTitle={currentReport.title}
+                  standfirst={article.standFirst.standFirst}
+                  content={article.body}
+                  header={article.header.hypeId}
+                  allArticles={articles}
+                />
+              )
+            }
+          })}
+          <Footer />
+        </AnimateIn>
+      ) : (
+        <Loader />
+      )}
     </Layout>
   )
 }
@@ -95,6 +107,9 @@ export const reportQuery = graphql`
       featuredImage {
         fluid(maxWidth: 1920, maxHeight: 1080, quality: 100) {
           ...GatsbyContentfulFluid
+        }
+        file {
+          url
         }
       }
       sponsoredBy {

@@ -18,6 +18,9 @@ export default interface IReport {
       }
       featuredImage: {
         fluid: any
+        file: {
+          url: string
+        }
       }
       sponsoredBy: ISponsored
       articles: IArticle[] | IInfographic[]

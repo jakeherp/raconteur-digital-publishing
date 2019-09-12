@@ -15,9 +15,10 @@ interface IProps {
   lang: string
   meta: any
   title: string
+  image: string
 }
 
-function SEO({ description, lang, meta, title }: IProps) {
+function SEO({ description, lang, meta, title, image }: IProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -53,6 +54,10 @@ function SEO({ description, lang, meta, title }: IProps) {
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+          property: `og:image`,
+          content: image,
         },
         {
           property: `og:type`,
