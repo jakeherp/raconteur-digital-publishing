@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
+import axios from "axios"
 
 import Layout from "../components/layout/layout"
 import Footer from "../components/layout/footer"
@@ -18,77 +19,146 @@ import IArticle from "../interface/article.interface"
 import IInfographic from "../interface/infographic.interface"
 
 const Report = ({ data }: IReport) => {
-  const currentReport = data.contentfulReport
-  const articles: IArticle[] | IInfographic[] = currentReport.articles
+                                        const currentReport =
+                                          data.contentfulReport
+                                        const articles:
+                                          | IArticle[]
+                                          | IInfographic[] =
+                                          currentReport.articles
 
-  const { loadReport, report } = useContext(ReportContext)
+                                        const {
+                                          loadReport,
+                                          report,
+                                        } = useContext(ReportContext)
 
-  useEffect(() => {
-    loadReport(currentReport)
-  }, [currentReport])
+                                        const getPdf = (
+                                          baseUrl = `http://api.pdflayer.com/api/convert`
+                                        ) => {
+                                          return axios
+                                            .post(baseUrl, {
+                                              access_key: `558868f728211280ca9628c27cc2838b`,
+                                              document_url: `https://insights.raconteur.net/${currentReport.slug}/`,
+                                              document_name: currentReport.slug,
+                                              custom_unit: `mm`,
+                                              page_size: `A4`,
+                                              orientation: `portrait`,
+                                              delay: 1000,
+                                            })
+                                            .then(res => {
+                                              console.log(res)
+                                            })
+                                            .catch(err => {
+                                              console.log(err.res)
+                                            })
+                                        }
 
-  return (
-    <Layout>
-      <SEO
-        title={currentReport.title}
-        description={currentReport.metaDescription}
-        image={currentReport.featuredImage.file.url}
-      />
-      {report ? (
-        <AnimateIn>
-          <Homescreen />
-          <TableOfContents />
-          {/*  */
-          // @ts-ignore
-          articles.map((article: any) => {
-            if (article.__typename === "ContentfulArticle") {
-              return (
-                <Article
-                  key={article.slug}
-                  title={article.title}
-                  slug={article.slug}
-                  reportSlug={currentReport.slug}
-                  reportTitle={currentReport.title}
-                  standFirst={article.standFirst}
-                  featuredImage={article.featuredImage}
-                  author={article.author.name}
-                  copy={article.content}
-                  allArticles={articles}
-                  boxOut={
-                    article.boxOut
-                      ? {
-                          title: article.boxOut.title,
-                          copy: article.boxOut.copy,
-                        }
-                      : null
-                  }
-                  isAdvertorial={article.isAdvertorial}
-                />
-              )
-            } else if (article.__typename === "ContentfulInfographic") {
-              return (
-                <Infographic
-                  key={article.slug}
-                  title={article.title}
-                  slug={article.slug}
-                  reportSlug={currentReport.slug}
-                  reportTitle={currentReport.title}
-                  standfirst={article.standFirst.standFirst}
-                  content={article.body}
-                  header={article.header.hypeId}
-                  allArticles={articles}
-                />
-              )
-            }
-          })}
-          <Footer />
-        </AnimateIn>
-      ) : (
-        <Loader />
-      )}
-    </Layout>
-  )
-}
+                                        http: useEffect(() => {
+                                          loadReport(currentReport)
+                                        }, [currentReport])
+
+                                        return (
+                                          <Layout>
+                                            <SEO
+                                              title={currentReport.title}
+                                              description={
+                                                currentReport.metaDescription
+                                              }
+                                              image={
+                                                currentReport.featuredImage.file
+                                                  .url
+                                              }
+                                            />
+                                            {report ? (
+                                              <AnimateIn>
+                                                <Homescreen />
+                                                <button
+                                                  onClick={() => getPdf()}
+                                                >
+                                                  Download
+                                                </button>
+                                                <TableOfContents />
+                                                {/*  */
+                                                // @ts-ignore
+                                                articles.map((article: any) => {
+                                                  if (
+                                                    article.__typename ===
+                                                    "ContentfulArticle"
+                                                  ) {
+                                                    return (
+                                                      <Article
+                                                        key={article.slug}
+                                                        title={article.title}
+                                                        slug={article.slug}
+                                                        reportSlug={
+                                                          currentReport.slug
+                                                        }
+                                                        reportTitle={
+                                                          currentReport.title
+                                                        }
+                                                        standFirst={
+                                                          article.standFirst
+                                                        }
+                                                        featuredImage={
+                                                          article.featuredImage
+                                                        }
+                                                        author={
+                                                          article.author.name
+                                                        }
+                                                        copy={article.content}
+                                                        allArticles={articles}
+                                                        boxOut={
+                                                          article.boxOut
+                                                            ? {
+                                                                title:
+                                                                  article.boxOut
+                                                                    .title,
+                                                                copy:
+                                                                  article.boxOut
+                                                                    .copy,
+                                                              }
+                                                            : null
+                                                        }
+                                                        isAdvertorial={
+                                                          article.isAdvertorial
+                                                        }
+                                                      />
+                                                    )
+                                                  } else if (
+                                                    article.__typename ===
+                                                    "ContentfulInfographic"
+                                                  ) {
+                                                    return (
+                                                      <Infographic
+                                                        key={article.slug}
+                                                        title={article.title}
+                                                        slug={article.slug}
+                                                        reportSlug={
+                                                          currentReport.slug
+                                                        }
+                                                        reportTitle={
+                                                          currentReport.title
+                                                        }
+                                                        standfirst={
+                                                          article.standFirst
+                                                            .standFirst
+                                                        }
+                                                        content={article.body}
+                                                        header={
+                                                          article.header.hypeId
+                                                        }
+                                                        allArticles={articles}
+                                                      />
+                                                    )
+                                                  }
+                                                })}
+                                                <Footer />
+                                              </AnimateIn>
+                                            ) : (
+                                              <Loader />
+                                            )}
+                                          </Layout>
+                                        )
+                                      }
 
 export default Report
 
