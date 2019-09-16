@@ -113,6 +113,7 @@ export const reportQuery = graphql`
         }
       }
       sponsoredBy {
+        sponsoredBy
         logo {
           file {
             url

@@ -62,6 +62,14 @@ const Scroll = styled(ScrollDown)`
   }
 `
 
+const SponsoredText = styled.p`
+  text-align: center;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: -1.5rem;
+`
+
 const Sponsor = styled.img`
   margin: 2rem auto;
   height: 5rem;
@@ -86,6 +94,9 @@ const Homescreen = () => {
         <Link to={`/${report.slug}/#table-of-contents`}>
           <Scroll />
         </Link>
+        {report.sponsoredBy.sponsoredBy && (
+          <SponsoredText>{report.sponsoredBy.sponsoredBy}</SponsoredText>
+        )}
         <Sponsor
           src={
             report.sponsoredBy.logoWhite

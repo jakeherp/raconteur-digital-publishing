@@ -62,7 +62,11 @@ const Footer = () => {
     <Foot>
       <Border />
       <div>
-        <h3 className="sponsored-by">Publication sponsored by</h3>
+        <h3 className="sponsored-by">
+          {report.sponsoredBy.sponsoredBy
+            ? report.sponsoredBy.sponsoredBy
+            : `Publication sponsored by`}
+        </h3>
         <img src={report.sponsoredBy.logo.file.url} />
       </div>
       <Columns>{report.footerText.footerText}</Columns>
