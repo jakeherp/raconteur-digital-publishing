@@ -64,6 +64,7 @@ const Scroll = styled(ScrollDown)`
 
 const Sponsor = styled.img`
   margin: 2rem auto;
+  height: 5rem;
   display: block;
 `
 
@@ -85,7 +86,13 @@ const Homescreen = () => {
         <Link to={`/${report.slug}/#table-of-contents`}>
           <Scroll />
         </Link>
-        <Sponsor src={report.sponsoredBy.logo.file.url} />
+        <Sponsor
+          src={
+            report.sponsoredBy.logoWhite
+              ? report.sponsoredBy.logoWhite.file.url
+              : report.sponsoredBy.logo.file.url
+          }
+        />
       </Container>
     </HomeScreen>
   )

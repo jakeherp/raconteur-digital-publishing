@@ -118,6 +118,11 @@ export const reportQuery = graphql`
             url
           }
         }
+        logoWhite {
+          file {
+            url
+          }
+        }
         name
         link
       }
