@@ -127,7 +127,7 @@ const Article = ({ ...props }: IProps) => {
       <Container>
         <Animate>
           <Headline>
-            {props.isAdvertorial && <Feature>Commercial Feature</Feature>}
+            {props.isAdvertorial && <Feature>Commercial feature</Feature>}
             <h1>
               <span>{props.title}</span>
             </h1>
