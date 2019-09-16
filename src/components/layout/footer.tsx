@@ -1,4 +1,6 @@
 import React, { useContext } from "react"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { BLOCKS } from "@contentful/rich-text-types"
 import styled from "styled-components"
 
 import Logo from "../../assets/logo.svg"
@@ -58,6 +60,12 @@ const Column = styled.div`
 const Footer = () => {
   const { report } = useContext(ReportContext)
 
+  const options: any = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (_node: any, children: any) => <p>{children}</p>,
+    },
+  }
+
   return (
     <Foot>
       <Border />
@@ -69,7 +77,9 @@ const Footer = () => {
         </h3>
         <img src={report.sponsoredBy.logo.file.url} />
       </div>
-      <Columns>{report.footerText.footerText}</Columns>
+      <Columns>
+        {documentToReactComponents(report.footerText.json, options)}
+      </Columns>
       <Wrapper>
         <Column>
           <Logo />

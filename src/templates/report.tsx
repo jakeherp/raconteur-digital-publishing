@@ -171,7 +171,7 @@ export const reportQuery = graphql`
         }
       }
       footerText {
-        footerText
+        json
       }
       contributors {
         name

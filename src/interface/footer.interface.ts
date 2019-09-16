@@ -1,3 +1,5 @@
 export default interface IFooter {
-  footerText: string
+  footerText: {
+    json: any
+  }
 }
