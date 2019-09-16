@@ -1,6 +1,4 @@
-<h1 align="center">
-  Raconteur Reports
-</h1>
+# Raconteur Reports
 
 This is a [Gatsby](https://www.gatsbyjs.org/) project for Raconteur Digital Reports.
 
@@ -12,6 +10,7 @@ This is a [Gatsby](https://www.gatsbyjs.org/) project for Raconteur Digital Repo
 
     ```sh
     cd raconteur-reports/
+    yarn
     gatsby develop
     ```
 
@@ -67,6 +66,52 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 12. **`README.md`**: A text file containing useful reference information about your project.
 
+## Project Structure
+
+This project was built with **TypeScript** and uses React 16's **Context API** for global state management. The structure of the Source looks as follows:
+
+    .
+    ├── assets
+    ├── components
+    │   ├── article
+    │   ├── layout
+    │   ├── sections
+    │   └── ui
+    ├── context
+    ├── interfaces
+    ├── pages
+    └── templates
+
+#### assets
+
+Contains global _assets_ for the project, i.e. logos, favicons, etc.
+
+#### components
+
+1.  **article**: contains all components an _article_ consists of.
+
+2.  **layout**: contains all components that make up the overall layout of the _report_.
+
+3.  **sections**: sections are the parts a _report_ consists of (header, article, infographic, table of contents and footer)
+
+4.  **ui**: small UI components, such as the animation component or page loader
+
+#### context
+
+Contains the context file, that creates our global context provider for reports.
+
+#### interface
+
+Contains all globally available TypeScript interfaces, that can be reused throughout the site.
+
+#### pages
+
+Default folder for static pages, created by Gatsby. We currently don't use any static pages apart from the 404 page.
+
+#### templates
+
+Contains the template files that create dynamic pages, in our case just used for _reports_.
+
 ## 🎓 Learning Gatsby
 
 Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
@@ -77,6 +122,4 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 ## 💫 Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://bitbucket.org/racounteur/raconteur-reports/)
