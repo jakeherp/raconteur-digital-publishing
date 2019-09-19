@@ -104,16 +104,46 @@ const Article = ({ ...props }: IProps) => {
     font-size: 20px;
   `
 
+  const Small = styled.small`
+    font-size: 0.7rem;
+    line-height: 1.25em !important;
+  `
+
   const options: any = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (_node: any, children: any) => <p>{children}</p>,
       [BLOCKS.QUOTE]: (_node: any, children: any) => (
         <Blockquote>{children}</Blockquote>
       ),
-      [BLOCKS.EMBEDDED_ENTRY]: (_node: any) => (
-        <Chart format={_node.data.target.fields.format["en-GB"]}>
-          <Hype animationName={_node.data.target.fields.hypeId["en-GB"]} />
-        </Chart>
+      [BLOCKS.EMBEDDED_ENTRY]: (_node: any) => {
+        const entry = _node.data.target
+
+        if (
+          entry.sys.type === "Entry" &&
+          entry.sys.contentType.sys.id !== "smallPrint"
+        ) {
+          return (
+            <Chart format={entry.fields.format["en-GB"]}>
+              <Hype animationName={entry.fields.hypeId["en-GB"]} />
+            </Chart>
+          )
+        } else if (
+          entry.sys.type === "Entry" &&
+          entry.sys.contentType.sys.id === "smallPrint"
+        ) {
+          return entry.fields.text["en-GB"].content.map((c: any, i: number) => (
+            <p key={i}>
+              <Small>{c.content.map((text: any) => text.value)}</Small>
+            </p>
+          ))
+        }
+      },
+      [BLOCKS.EMBEDDED_ASSET]: (_node: any) => (
+        <p>
+          <img
+            src={_node.data.target.fields.file["en-GB"].url}
+            alt={_node.data.target.fields.title["en-GB"]}
+          />
+        </p>
       ),
     },
   }

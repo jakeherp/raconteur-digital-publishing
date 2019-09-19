@@ -21,6 +21,10 @@ const ShortArticle = styled.div`
     font-family: ${props => props.theme.fonts.apercu};
     line-height: 1.7;
   }
+  img {
+    width: 300px;
+    max-width: 100%;
+  }
 `
 
 interface IProps {
