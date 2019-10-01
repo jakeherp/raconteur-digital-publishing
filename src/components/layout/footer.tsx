@@ -69,14 +69,16 @@ const Footer = () => {
   return (
     <Foot>
       <Border />
-      <div>
-        <h3 className="sponsored-by">
-          {report.sponsoredBy.sponsoredBy
-            ? report.sponsoredBy.sponsoredBy
-            : `Publication sponsored by`}
-        </h3>
-        <img src={report.sponsoredBy.logo.file.url} />
-      </div>
+      {report.sponsoredBy && (
+        <div>
+          <h3 className="sponsored-by">
+            {report.sponsoredBy && report.sponsoredBy.sponsoredBy
+              ? report.sponsoredBy.sponsoredBy
+              : `Publication sponsored by`}
+          </h3>
+          <img src={report.sponsoredBy.logo.file.url} />
+        </div>
+      )}
       <Columns>
         {documentToReactComponents(report.footerText.json, options)}
       </Columns>

@@ -94,16 +94,18 @@ const Homescreen = () => {
         <Link to={`/${report.slug}/#table-of-contents`}>
           <Scroll />
         </Link>
-        {report.sponsoredBy.sponsoredBy && (
+        {report.sponsoredBy && report.sponsoredBy.sponsoredBy && (
           <SponsoredText>{report.sponsoredBy.sponsoredBy}</SponsoredText>
         )}
-        <Sponsor
-          src={
-            report.sponsoredBy.logoWhite
-              ? report.sponsoredBy.logoWhite.file.url
-              : report.sponsoredBy.logo.file.url
-          }
-        />
+        {report.sponsoredBy && (
+          <Sponsor
+            src={
+              report.sponsoredBy.logoWhite
+                ? report.sponsoredBy.logoWhite.file.url
+                : report.sponsoredBy.logo.file.url
+            }
+          />
+        )}
       </Container>
     </HomeScreen>
   )
