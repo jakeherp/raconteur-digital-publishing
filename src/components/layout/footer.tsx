@@ -79,9 +79,11 @@ const Footer = () => {
           <img src={report.sponsoredBy.logo.file.url} />
         </div>
       )}
-      <Columns>
-        {documentToReactComponents(report.footerText.json, options)}
-      </Columns>
+      {report.footerText && (
+        <Columns>
+          {documentToReactComponents(report.footerText.json, options)}
+        </Columns>
+      )}
       <Wrapper>
         <Column>
           <Logo />

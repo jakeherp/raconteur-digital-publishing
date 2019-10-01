@@ -151,9 +151,11 @@ const Article = ({ ...props }: IProps) => {
   // const { report } = useContext(ReportContext)
   return (
     <Section id={props.slug}>
-      <Header>
-        <Img fluid={props.featuredImage.fluid} />
-      </Header>
+      {props.featuredImage && (
+        <Header>
+          <Img fluid={props.featuredImage.fluid} />
+        </Header>
+      )}
       <Container>
         <Animate>
           <Headline>
