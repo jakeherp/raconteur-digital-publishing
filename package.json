@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "Jacob Herper <jacob@herper.io>",
   "dependencies": {
-    "@contentful/rich-text-plain-text-renderer": "^13.4.0",
+    "@contentful/rich-text-plain-text-renderer": "^14.0.0",
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^13.4.0",
     "dotenv": "^8.1.0",
